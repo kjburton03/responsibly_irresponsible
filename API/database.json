@@ -1,0 +1,85 @@
+{
+  "users": [
+    {
+      "email": "kimIsCool@WhatAmIDoing.com",
+      "fullName": "Kimber Burton",
+      "isVip": true,
+      "id": 4
+    },
+    {
+      "id": 2,
+      "fullName": "Tuesday Green",
+      "email": "ta_ta_ta_tuesday@yahoo.com",
+      "isFancy": false
+    },
+    {
+      "email": "hotGrannyWitaDegree@shmoney.com",
+      "fullName": "Anna Oprisch",
+      "isFancy": true,
+      "id": 3
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "phoneNumber": "404-529-3049",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "phoneNumber": "506-343-2456",
+      "userId": 2
+    },
+    {
+      "id": 3,
+      "phoneNumber": "615-432-5657",
+      "userId": 3
+    }
+  ],
+  "vips": [
+    {
+      "id": 1,
+      "phoneNumber": "404-529-3049",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "phoneNumber": "615-432-5657",
+      "userId": 3
+    }
+  ],
+  "serviceTodos": [
+    {
+      "id": 1,
+      "userId": 1,
+      "description": "Make a Bed",
+      "daily": true,
+      "amount": 1,
+      "dateCompleted": ""
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "description": "Run 15 miles",
+      "daily": false,
+      "amount": 7,
+      "dateCompleted": ""
+    },
+    {
+      "userId": 2,
+      "description": "figure out edit form ",
+      "daily": false,
+      "dateCompleted": "",
+      "id": 3
+    }
+  ],
+  "serviceShops": [
+    {
+      "id": 1,
+      "userId": 1,
+      "description": "Litter-Robot",
+      "website": "",
+      "amount": 729
+    }
+  ]
+}

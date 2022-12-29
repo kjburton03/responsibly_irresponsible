@@ -1,0 +1,27 @@
+import { Link, useNavigate } from "react-router-dom"
+import "./NavBar.css"
+
+export const VipNav = () => {
+    const navigate = useNavigate()
+
+    return (
+        <ul className="navbar">
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/todos">Todo List</Link>
+            </li>
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/shops">Shopping List</Link>
+            </li>
+            {
+                localStorage.getItem("responsible_user")
+                    ? <li className="navbar__item navbar__logout">
+                        <Link className="navbar__link" to="" onClick={() => {
+                            localStorage.removeItem("responsible_user")
+                            navigate("/", {replace: true})
+                        }}>Logout</Link>
+                    </li>
+                    : ""
+            }
+        </ul>
+    )
+}
