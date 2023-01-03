@@ -1,13 +1,13 @@
 import { useState } from "react"
-import { TodoList } from "./TodoList"
-import { TodoSearch } from "./TodoSearch"    // combines these two with parent
+import { ShopList } from "./ShopList"
+import { ShopSearch } from "./ShopSearch"    // combines these two with parent
 
-export const TodoContainer = () => {
+export const ShopContainer = () => {
     const [searchTerms, setSearchTerms] = useState("")   // keeping the state of search terms in here  // empty string
 
     return <>
-        <TodoSearch setterFunction={setSearchTerms} keyColon={"value"} example={120} placenta={"yummy"}/> 
-        <TodoList searchTermState={searchTerms}/>
+        <ShopSearch setterFunction={setSearchTerms} keyColon={"value"} example={120} placenta={"yummy"}/> 
+        <ShopList searchTermState={searchTerms}/>
             
     </>
 }

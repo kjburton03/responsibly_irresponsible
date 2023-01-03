@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import "./Login.css"
 
 export const Login = () => {
-    const [email, set] = useState("kimIsCool@WhatAmIDoing.com")
+    const [email, set] = useState("dstoade0@cornell.edu")
     // puts thate email in as placeholder 
     const navigate = useNavigate()
 
@@ -19,15 +19,15 @@ export const Login = () => {
             .then(foundUsers => {
                 if (foundUsers.length === 1) {
                     const user = foundUsers[0]
-                    localStorage.setItem("responsible_user", JSON.stringify({
+                    localStorage.setItem("honey_user", JSON.stringify({
                         id: user.id,
-                        vip: user.isVip
+                        staff: user.isStaff
                     }))
 
                     navigate("/")
                 }
                 else {
-                    window.alert("who are you?")
+                    window.alert("Invalid login")
                 }
             })
     }
@@ -36,8 +36,8 @@ export const Login = () => {
         <main className="container--login">
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Welcome Back To A Life Of Luxury</h1>
-                    <h2>Sign in</h2>
+                    <h1>Responsibly Irresponsible</h1>
+                    <h2>Please sign in</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
                         <input type="email"
@@ -55,7 +55,7 @@ export const Login = () => {
                 </form>
             </section>
             <section className="link--register">
-                <Link to="/register">Ready to change your world?</Link>
+                <Link to="/register">Not a member yet?</Link>
             </section>
         </main>
     )

@@ -7,40 +7,43 @@
 ///////////////higher order component
 
 import { Outlet, Route, Routes } from "react-router-dom"
-import { TodoList } from "../todos/TodoList"  //in ticketContainer
-import { TodoForm } from "../todos/TodoForm" /// dont want staff to have the ability to create tickets
-import { TodoSearch } from "../todos/TodoSearch" //in ticketContainer
-import { TodoContainer } from "../todos/TodoContainer" //parent
-import { ShopForm } from "../giftShop/ShopForm"
-import { ShopContainer } from "../giftShop/ShopContainer"
-// import { VipList } from "../vips/VipList"
-
+import { TicketList } from "../tickets/TicketList"  //in ticketContainer
+import { TicketForm } from "../tickets/TicketForm" /// dont want staff to have the ability to create tickets
+import { TicketSearch } from "../tickets/TicketSearch" //in ticketContainer
+import { TicketContainer } from "../tickets/TicketContainer" //parent
+import { EmployeeList } from "../employees/EmployeeList"
+import { EmployeeDetails } from "../employees/EmployeeDetails"
+import { CustomerList } from "../customers/CustomerList"
+import { CustomerDetails } from "../customers/CustomerDetails"
+import { Profile } from "../profile/Profile"
 
 
 ////// dont forget to change from ApplicationViews to Employee Views
-export const VipViews = () => {
+export const EmployeeViews = () => {
 	return (
         <Routes>
             <Route path="/" element={
                 <>
-                    <h1>Responsible Irresponsible</h1>
-                    <div>Live Your Life Luxuriously</div>
+                    <h1>Honey Rae Repair Shop</h1>
+                    <div>Your one-stop-shop to getting all your electronics fixed</div>
 
                     <Outlet />
                 </>
             }>
 
-                <Route path="todos" element={ <TodoContainer /> } />
+                <Route path="tickets" element={ <TicketContainer /> } />
                                             {/* links to ticketContainer which is the parent of ticket search and ticket list */}
-                <Route path="todo/create" element={ <TodoForm /> } />
+                {/* <Route path="ticket/create" element={ <TicketForm /> } />
+                                             links to ticket form page. found under TicketList & Ticket */}
+                  <Route path="employees" element={ <EmployeeList /> } />
+                                                    {/* route to employee list */}
+                  <Route path="employees/:employeeId" element={ <EmployeeDetails/> } />
+                                                {/* employee/employeeId leads to individual employees  */} 
+                 <Route path="customers" element={ <CustomerList /> } />
 
-                <Route path="shops" element={ <ShopContainer /> } />
+                 <Route path="customers/:customerId" element={ <CustomerDetails/> } />
 
-                <Route path="shop/create" element={ <ShopForm /> } />
-
-                                             {/* links to ticket form page. found under TicketList & Ticket */} */
-                  {/* <Route path="vips" element={ <VipList /> } />
-                                                    route to employee list */}
+                 <Route path="profile" element={ <Profile/> } />
             </Route>
         </Routes>
     )

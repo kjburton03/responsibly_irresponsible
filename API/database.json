@@ -1,85 +1,77 @@
 {
   "users": [
     {
-      "email": "kimIsCool@WhatAmIDoing.com",
-      "fullName": "Kimber Burton",
-      "isVip": true,
-      "id": 4
+      "id": 1,
+      "fullName": "Dion Stoade",
+      "email": "dstoade0@cornell.edu",
+      "isStaff": false
     },
     {
-      "id": 2,
-      "fullName": "Tuesday Green",
-      "email": "ta_ta_ta_tuesday@yahoo.com",
-      "isFancy": false
-    },
-    {
-      "email": "hotGrannyWitaDegree@shmoney.com",
-      "fullName": "Anna Oprisch",
-      "isFancy": true,
-      "id": 3
+      "id": 4,
+      "fullName": "Helenelizabeth Passfield",
+      "email": "hpassfield7@netvibes.com",
+      "isStaff": true
     }
   ],
   "customers": [
     {
-      "id": 1,
-      "phoneNumber": "404-529-3049",
-      "userId": 1
-    },
-    {
       "id": 2,
-      "phoneNumber": "506-343-2456",
-      "userId": 2
-    },
-    {
-      "id": 3,
-      "phoneNumber": "615-432-5657",
-      "userId": 3
+      "address": "56849 Fadel Gateway",
+      "phoneNumber": "202-244-7090",
+      "userId": 1
     }
   ],
-  "vips": [
+  "employees": [
     {
       "id": 1,
-      "phoneNumber": "404-529-3049",
-      "userId": 1
-    },
-    {
-      "id": 2,
-      "phoneNumber": "615-432-5657",
-      "userId": 3
-    }
-  ],
-  "serviceTodos": [
-    {
-      "id": 1,
-      "userId": 1,
-      "description": "Make a Bed",
-      "daily": true,
-      "amount": 1,
-      "dateCompleted": ""
-    },
-    {
-      "id": 2,
-      "userId": 3,
-      "description": "Run 15 miles",
-      "daily": false,
-      "amount": 7,
-      "dateCompleted": ""
-    },
-    {
-      "userId": 2,
-      "description": "figure out edit form ",
-      "daily": false,
-      "dateCompleted": "",
-      "id": 3
+      "specialty": "PC Repair and mac",
+      "rate": 83.47,
+      "userId": 4
     }
   ],
   "serviceShops": [
     {
-      "id": 1,
       "userId": 1,
-      "description": "Litter-Robot",
-      "website": "",
-      "amount": 729
+      "description": "dc",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 0,
+      "dateCompleted": "",
+      "id": 11
     }
-  ]
+  ],
+  "serviceTickets": [
+    {
+      "userId": 4,
+      "description": "https://www.google.com/",
+      "emergency": true,
+      "dateCompleted": "",
+      "rate": 0,
+      "id": 9
+    },
+    {
+      "userId": 4,
+      "description": "i broke ze tv ",
+      "emergency": true,
+      "dateCompleted": "",
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "description": "figure out bank",
+      "emergency": true,
+      "dateCompleted": "2023-01-03T15:31:05.976Z",
+      "rate": 134,
+      "id": 19
+    },
+    {
+      "userId": 1,
+      "description": "kbhgvouhfes",
+      "emergency": false,
+      "dateCompleted": "2023-01-03T15:35:40.218Z",
+      "rate": 6,
+      "id": 21
+    }
+  ],
+  "customerTickets": []
 }

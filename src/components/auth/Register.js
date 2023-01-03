@@ -21,9 +21,9 @@ export const Register = (props) => {
             .then(res => res.json())
             .then(createdUser => {
                 if (createdUser.hasOwnProperty("id")) {
-                    localStorage.setItem("responsible_user", JSON.stringify({
+                    localStorage.setItem("honey_user", JSON.stringify({
                         id: createdUser.id,
-                        vip: createdUser.isVip
+                        staff: createdUser.isStaff
                     }))
 
                     navigate("/")
@@ -56,7 +56,7 @@ export const Register = (props) => {
     return (
         <main style={{ textAlign: "center" }}>
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Begin your journey here</h1>
+                <h1 className="h3 mb-3 font-weight-normal">Please Register for Honey Rae Repairs</h1>
                 <fieldset>
                     <label htmlFor="fullName"> Full Name </label>
                     <input onChange={updateCustomer}
@@ -72,14 +72,14 @@ export const Register = (props) => {
                 <fieldset>
                     <input onChange={(evt) => {
                         const copy = {...customer}
-                        copy.isVip = evt.target.checked
+                        copy.isStaff = evt.target.checked
                         setCustomer(copy)
                     }}
-                        type="checkbox" id="isVip" />
-                    <label htmlFor="email"> VIP Babies </label>
+                        type="checkbox" id="isStaff" />
+                    <label htmlFor="email"> I am an employee </label>
                 </fieldset>
                 <fieldset>
-                    <button type="submit"> Let's go ladies.  </button>
+                    <button type="submit"> Register </button>
                 </fieldset>
             </form>
         </main>

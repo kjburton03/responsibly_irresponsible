@@ -2,6 +2,13 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
+    background-color: #EAF4F4;
+    padding: 1.4rem;
+    border: .4rem;
+    border-color: #061C14;
+    border-style: ridge;
+    color: #B7E4C7;
+    
 }
 
 .navbar__item {
@@ -11,5 +18,10 @@
 
 .navbar__logout {
     margin-left: auto;
+}
+
+.navbar__link:visited {
+    color: #6B9080;
+
 }
 

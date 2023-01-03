@@ -1,23 +1,26 @@
+//////instructions on adding new page to website at the bottom
 import { Link, useNavigate } from "react-router-dom"
 import "./NavBar.css"
 
-export const CustomerNav = () => {
+export const EmployeeNav = () => {
     const navigate = useNavigate()
 
     return (
         <ul className="navbar">
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/tickets">Todo List</Link>
+                <Link className="navbar__link" to="/tickets">Tickets</Link>
             </li>
-          
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/shops">Shop</Link>
-            </li>
-            {/* <li className="navbar__item active">
                 <Link className="navbar__link" to="/employees">Employees</Link>
-            </li> */}
+            </li>
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/customers">Customers</Link>
+            </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/profile">Profile</Link>
+            </li>
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/shops">Shop</Link>
             </li>
             {
                 localStorage.getItem("honey_user")
@@ -44,3 +47,9 @@ export const CustomerNav = () => {
 //         </li>
 //         : ""
 // }
+
+
+//////////////
+// add link to new page on EmployeeNav.js ->
+// add route to employeeViews.js ->
+//
