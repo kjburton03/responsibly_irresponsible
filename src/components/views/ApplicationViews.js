@@ -1,22 +1,21 @@
 import { CustomerViews } from "./CustomerViews"
-import { VipViews } from "./VipViews"
+import { EmployeeViews } from "./EmployeeViews"
 
 
 
 
 export const ApplicationViews = () => {
-    const localResponsibleUser = localStorage.getItem("responsible_user")
+    const localHoneyUser = localStorage.getItem("honey_user")
     //  grabs honey_user out of storage
     // ^string, needs to be converted into an objext
-    const responsibleUserObject = JSON.parse(localResponsibleUser) 
+    const honeyUserObject = JSON.parse(localHoneyUser) 
     // devtools -> application -> storage -> localhost -> now shows the value of staff and id under it 
     //stole from ticketList.js/////////////////
 
-    if (responsibleUserObject.vip) {
+    if (honeyUserObject.staff) {
         //return employee views 
-        return <VipViews />
+        return <EmployeeViews />
     }  // devtools -> components -> applicationViews -> employeeViews -> ticket container ticket search ticket 
-    //////// views can be found under their pages
     else {
         //return customer views
         return <CustomerViews />

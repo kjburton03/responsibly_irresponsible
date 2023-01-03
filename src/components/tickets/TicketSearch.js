@@ -1,4 +1,4 @@
-export const TodoSearch = ({ setterFunction }) => {  // returns an input field 
+export const TicketSearch = ({ setterFunction }) => {  // returns an input field 
     return (
         <div>
         <input 
@@ -7,7 +7,7 @@ export const TodoSearch = ({ setterFunction }) => {  // returns an input field
                     setterFunction(changeEvent.target.value)
                 }
             }
-        type="text" placeholder="hot yoga" /> 
+        type="text" placeholder="Enter search terms" /> 
         </div>
     )
 }

@@ -8,7 +8,8 @@ button,
 input,
 select,
 textarea {
-  color: #404040;
+  color: #1B4332;
+  background-color: #EAF4F4;
   font-family: "Comfortaa", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.5;
@@ -19,7 +20,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Patua One", serif;
+  font-family: Georgia, 'Times New Roman', Times, serif, serif;
   letter-spacing: 2px;
 }
 

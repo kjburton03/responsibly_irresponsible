@@ -1,14 +1,15 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-export const TodoForm = () => {
+export const TicketForm = () => {
     /*
         TODO: Add the correct default properties to the
         initial state object
     */
-    const [todo, update] = useState({
+    const [ticket, update] = useState({
         description: "", //initially want nothing to show up
-        daily: false //defaults toggle to not an emergency 
+        rate: 0,
+        emergency: false //defaults toggle to not an emergency 
         // description and emergency will not show up until they are implemented into the onChange of their forms 
 
     })
@@ -19,8 +20,8 @@ export const TodoForm = () => {
 
     const navigate = useNavigate()  //to send tickets to api ... variable that is a function
 
-    const localResponsibleUser = localStorage.getItem("responsible_user")
-    const responsibleUserObject = JSON.parse(localResponsibleUser)
+    const localHoneyUser = localStorage.getItem("honey_user")
+    const honeyUserObject = JSON.parse(localHoneyUser)
 
     const handleSaveButtonClick = (event) => { //function for when button is clicked  to invoke the function, the parameter is defined as event
         event.preventDefault()
@@ -35,62 +36,90 @@ export const TodoForm = () => {
         //     "dateCompleted": ""
         //   },  <----- what needs to be filled out to be sent to api 
 
-        const todoToSendToAPI = {                  // variable object to be saved to API   
-            userId: responsibleUserObject.id,              //gets the id directly from the api ... i think it gets it from somewhere i dont have to worry about
-            description: todo.description,            // comes from state variable ticket 
-            daily: todo.daily,
+        const ticketToSendToAPI = {                  // variable object to be saved to API   
+            userId: honeyUserObject.id,              //gets the id directly from the api ... i think it gets it from somewhere i dont have to worry about
+            description: ticket.description,            // comes from state variable ticket 
+            rate: ticket.rate,
+            emergency: ticket.emergency,
+
+            
             dateCompleted: ""                           // leave blank cause it hasnt been worked on 
         }
 
 
         // TODO: Perform the fetch() to POST the object to the API
-        return fetch(`http://localhost:8088/serviceTodos`, { //where the tickets are held in json  
+        return fetch(`http://localhost:8088/serviceTickets`, { //where the tickets are held in json  
             method: "POST",                                     //second argument is options method is to post. default operation is to get , this is post or create
             headers: {                                          //   specify header for content type so server knows its being passed to json being passed to json 
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(todoToSendToAPI)             // body of the request is the info the client wants the api to save
+            body: JSON.stringify(ticketToSendToAPI)             // body of the request is the info the client wants the api to save
                                                                 // can't send raw js object so we stringify it 
                                                                 //saves it
     })   
             .then(response => response.json())                  //object has been sent the json server has responded 
             .then(() => {
-                navigate("/todos")                            // navigates back to ticket list once submitted.
+                navigate("/tickets")                            // navigates back to ticket list once submitted.
             })
         } //dont forget this guy
                                                                 // when working with fetch devTools -> network  
                                                                    // add new ticket and it will show up under serviceTickets 201 status approves it
 
     return (
-        <form className="todoForm">
-            <h2 className="todoForm__title">New Todo List Item</h2>
+        <form className="ticketForm">
+            <h2 className="ticketForm__title">New Service Ticket</h2>
             <fieldset>
                 <div className="form-group"> 
-                    <label htmlFor="description">idfk todoform . j s :</label>
+                    <label htmlFor="description">Description:</label>
                     <input
                         required autoFocus
                         type="text"
                         className="form-control"
-                        placeholder="Wake up fabulous"
-                        value={todo.description}
+                        placeholder="Brief description of problem"
+                        value={ticket.description}
                         onChange={
                             (evt) => {
-                                const copy = {...todo}
+                                const copy = {...ticket}
                                 copy.description = evt.target.value
                                 update(copy)
                             }
                         } />
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset> 
                 <div className="form-group">
-                    <label htmlFor="name">Daily:</label>
-                    <input type="checkbox"
-                        value={todo.daily}
+                    <label htmlFor="name">Cost:</label>
+                    <input type="number"
+                        className="form-control"
+                        value={ticket.rate}
                         onChange={
                             (evt) => {
-                                const copy = {...todo}
-                                copy.daily = evt.target.checked
+                                // TODO: Update rate property
+                                // even tho the type is number it will always return a string
+                                // unlessss you wrap it in a parse 
+                                const copy = {...ticket}
+                                copy.rate = parseFloat(evt.target.value, 2) //float is for decimal, 2 is for        components -> applicationviews -> employeeviews -> profile -> employee form -> changes state
+                                //got initial state fethed from the api for the permanent state and updated the  component state and now capturing what the user did .next step saving
+                                update(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
+
+
+
+
+
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="name">Emergency:</label>
+                    <input type="checkbox"
+                        value={ticket.emergency}
+                        onChange={
+                            (evt) => {
+                                const copy = {...ticket}
+                                copy.emergency = evt.target.checked
                                 update(copy)
                             }
 
@@ -100,7 +129,7 @@ export const TodoForm = () => {
             <button 
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                 className="btn btn-primary">
-                Submit Todo List Item
+                Submit Ticket
             </button>
         </form>
     )

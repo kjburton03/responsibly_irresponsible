@@ -1,0 +1,70 @@
+.shops {
+    display: flex;
+    flex-direction: column;
+    background-color: #CCE3DE;
+
+}
+
+.shop {
+    background-color: #1b4332;
+    border: 2px groove #a5c3b2;
+    padding: 0.2rem;
+    margin: 0.9rem 3.6rem ;
+   
+    
+    width: 350px;
+    border-radius: 10px;
+    color:#95D5B2
+    
+
+}
+.title {
+    font-size: 39px;
+}
+
+
+
+.shop__delete {
+    margin-left: auto;
+    background-color: #CCE3DE;
+}
+
+.shop__finish {
+    margin-left: auto;
+    background-color: #CE3DEF;
+}
+
+.shop__footer {
+    display: flex;
+    padding: 1rem 0 0 0 ;
+    border-top: 1px dashed darkmagenta;
+    margin: 1rem 0 0 0;
+}
+
+.shop__header {
+    font-size: large;
+    padding: 0;
+    background-color: crimson;
+}
+
+/* .please {
+    background-color: #2d6a4f;
+    padding: 1 1 2rem 1;
+    margin: 2rem 1 1 1;
+    justify-content: center;
+    
+} */
+
+ .pray_bitch {
+    background-color: #1B4332;
+    padding: 1.3rem;
+    margin: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    color: #B7E4C7;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+} 
+
+.shop_top{
+    background-color: #2d6a4f;
+}
