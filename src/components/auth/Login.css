@@ -43,20 +43,31 @@ fieldset {
 
 .container--login {
     text-align: center;
+    margin-top: 38rem;
+    height: 100rem;
+    
 }
 
-.form--login {
+/* .form--login {
     background-position-x: right;
     z-index: 1;
-    min-height: 25rem;
+    max-height: 6rem;
     min-width: 45rem;
     background-color: hsla(0,0%,100%,0.40);
     background-blend-mode: overlay;
     background-repeat: no-repeat;
-}
+} */
 
 .button--close {
     position: relative;
     bottom: -2rem;
 }
 
+.linkylink {
+    font-size: larger;
+    margin-top: 0;
+}
+
+.linkylink:visited {
+    color: white;
+}

@@ -113,7 +113,7 @@ export const TicketForm = () => {
 
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Emergency:</label>
+                    <label htmlFor="name">Daily:</label>
                     <input type="checkbox"
                         value={ticket.emergency}
                         onChange={
@@ -135,42 +135,3 @@ export const TicketForm = () => {
     )
 }
 
-
-///// 3000/ticket/create? devtools -> components -> TicketForm -> hooks change while typing state variable matches input
-/// watch how the state of the component changes ^^^ state variables emergency & id
-
-
-
-
-
-///// 2 form fields with 2 fieldsets with 2 separate divs both under the className form-group
-//  each form field needs a default state ----- added to const [ticket, update] = useState{ description:"" emergency: ""}
-// update our state via onChange///////////////// 
-// Description :
-//          value -> ticket.description
-            //update state via onChange
-            // onChange={
-            //     (evt) => {                               /// <--- callback function  captures the change event 
-            //         const copy = {...ticket}             //// created copy of existing state  , spread operator to copy ...dots
-            //         copy.description = evt.target.value  //// modify the copy. new value of the description 
-                                                                    /// property should be whatever the current value of the input
-                                                                    /// field is and we get that through the event that is broadcast by the browser the change event 
-
-                                                                    /// set the description to the event targets the value aka the target of the value of the event
-            //         update(copy)                         /// now need to update the state  , passing copy back to be the state of each one of these.
-            //     }
-            // } /> 
-
-// Emergency toggle 
-        //          value -> ticket.emergency 
-
-        // evt.target.checked -> returns as true or false 
-
-
-
-
-
-// button 
-        //submits ticket via fetch to api
-        // builds new object ...json makes the primary server key for us. 
-        // clickevent is passed on from the onclick to the functio

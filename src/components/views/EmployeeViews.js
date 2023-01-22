@@ -33,48 +33,16 @@ export const EmployeeViews = () => {
 
                 <Route path="tickets" element={ <TicketContainer /> } />
                                             {/* links to ticketContainer which is the parent of ticket search and ticket list */}
-                {/* <Route path="ticket/create" element={ <TicketForm /> } />
-                                             links to ticket form page. found under TicketList & Ticket */}
-                  <Route path="employees" element={ <EmployeeList /> } />
+                <Route path="employees" element={ <EmployeeList /> } />
                                                     {/* route to employee list */}
-                  <Route path="employees/:employeeId" element={ <EmployeeDetails/> } />
+                <Route path="employees/:employeeId" element={ <EmployeeDetails/> } />
                                                 {/* employee/employeeId leads to individual employees  */} 
-                 <Route path="customers" element={ <CustomerList /> } />
+                <Route path="customers" element={ <CustomerList /> } />
 
-                 <Route path="customers/:customerId" element={ <CustomerDetails/> } />
+                <Route path="customers/:customerId" element={ <CustomerDetails/> } />
 
-                 <Route path="profile" element={ <Profile/> } />
+                <Route path="profile" element={ <Profile/> } />
             </Route>
         </Routes>
     )
 }
-
-
-
-
-
-
-
-
-
-
-//  starter code below
-// export const ApplicationViews = () => {
-// 	return <>
-// 		<h1 className="title--main">Honey Rae Repairs</h1>
-// 		<div>Your one-stop shop for repairing your tech</div>
-// 	</>
-// }
-
-{/* <Route path="tickets" element={ 
-    <>
-        <TicketSearch />
-        <TicketList />
-    </>
-} /> */}
-                            // route used before parent was made in ticketContainer
-                            // links to tickets page & ticket search for employees - now two components - > changes to react fragment and now siblings*/}
-                            // Ticket list and ticket search cannot talk to each other without a parent - they arent inside each other they are next to each other
-                           ///  ****parent is made in ticketContainer******  
-
-        

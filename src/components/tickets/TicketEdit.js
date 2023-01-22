@@ -1,11 +1,11 @@
-// // Create a new module src/components/tickets/TicketEdit.js.
+//  Create a new module src/components/tickets/TicketEdit.js.
 
-// // The edit form is, largely, the same as the TicketForm component. It has some important differences.
+//  The edit form is, largely, the same as the TicketForm component. It has some important differences.
 
-// // You need to GET the data based on the route parameter
-// // The request to save the data is a PUT instead of a POST
-// // The checked attribute of the checkbox must be bound to the ticket.emergency property
-// // You can give it your best shot to transpose the code from TicketForm to TicketEdit and change it where needed, or you can snag the starter code below.
+// You need to GET the data based on the route parameter
+//  The request to save the data is a PUT instead of a POST
+//  The checked attribute of the checkbox must be bound to the ticket.emergency property
+//  You can give it your best shot to transpose the code from TicketForm to TicketEdit and change it where needed, or you can snag the starter code below.
 
 
 import { useEffect, useState } from "react"
@@ -106,75 +106,3 @@ export const TicketEdit = () => {
         </button>
     </form>
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export const TicketEdit = () => {
-//     // TODO: This state object should not be blank
-//     const [ticket, assignTicket] = useState({})
-
-//     // TODO: What is the variable in which you stored the route parameter?
-//     const { ??? } = useParams()
-
-//     // TODO: Get the ticket state from the API.
-//     useEffect(() => {
-
-//     }, [ ??? ])
-
-//     const handleSaveButtonClick = (event) => {
-//         event.preventDefault()
-
-//         // TODO: Write the fetch for the PUT request to replace the object being edited
-//     }
-
-
-//     return <form className="ticketForm">
-//         <h2 className="ticketForm__title">Service Ticket</h2>
-//         <fieldset>
-//             <div className="form-group">
-//                 <label htmlFor="description">Description:</label>
-//                 <textarea
-//                     required autoFocus
-//                     type="text"
-//                     style={{
-//                         height: "10rem"
-//                     }}
-//                     className="form-control"
-//                     value={ticket.description}
-//                     onChange={
-//                         (evt) => {
-//                             // TODO: Update state with a modified copy
-//                         }
-//                     }>{ticket.description}</textarea>
-//             </div>
-//         </fieldset>
-//         <fieldset>
-//             <div className="form-group">
-//                 <label htmlFor="name">Emergency:</label>
-//                 <input type="checkbox"
-//                     onChange={
-//                         (evt) => {
-//                             // TODO: Update state with a modified copy
-//                         }
-//                     } />
-//             </div>
-//         </fieldset>
-//         <button
-//             onClick={() => handleSaveButtonClick()}
-//             className="btn btn-primary">
-//             Save Edits
-//         </button>
-//     </form>
-// }

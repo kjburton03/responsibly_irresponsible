@@ -35,21 +35,3 @@ export const EmployeeNav = () => {
         </ul>
     )
 }
-
-//  link  for logout : 
-// {
-//     localStorage.getItem("honey_user")
-//         ? <li className="navbar__item navbar__logout">
-//             <Link className="navbar__link" to="" onClick={() => { ///// on click 
-//                 localStorage.removeItem("honey_user")    //// onclick removes honey_user logging them out
-//                 navigate("/", {replace: true})          //// navigates back to home screen to login
-//             }}>Logout</Link> <---- link  creates hyper link /// shows logout on navbar
-//         </li>
-//         : ""
-// }
-
-
-//////////////
-// add link to new page on EmployeeNav.js ->
-// add route to employeeViews.js ->
-//

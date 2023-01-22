@@ -55,13 +55,15 @@ export const Register = (props) => {
 
     return (
         <main style={{ textAlign: "center" }}>
+            <div className="registerbox">
+
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register for Honey Rae Repairs</h1>
+                <h1 className="h3 mb-3 font-weight-normal">Are you ready to live your life luxuriously?</h1>
                 <fieldset>
-                    <label htmlFor="fullName"> Full Name </label>
+                    <label htmlFor="fullName"> Name </label>
                     <input onChange={updateCustomer}
-                           type="text" id="fullName" className="form-control"
-                           placeholder="Enter your name" required autoFocus />
+                        type="text" id="fullName" className="form-control"
+                        placeholder="Enter your name" required autoFocus />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="email"> Email address </label>
@@ -76,12 +78,13 @@ export const Register = (props) => {
                         setCustomer(copy)
                     }}
                         type="checkbox" id="isStaff" />
-                    <label htmlFor="email"> I am an employee </label>
+                    <label htmlFor="email"> Are you VIP material? </label>
                 </fieldset>
                 <fieldset>
-                    <button type="submit"> Register </button>
+                    <button type="submit"> Lets go girls </button>
                 </fieldset>
             </form>
+            </div>
         </main>
     )
 }

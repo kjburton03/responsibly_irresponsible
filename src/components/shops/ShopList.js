@@ -154,48 +154,42 @@ export const ShopList = ({ searchTermState }) => {  // theres the searchTermStat
 
     )
 
-    // const [menuItems, setMenuItems] = useState([])
-
-    // useEffect(
-    //     () => {
-    //         fetch(`http://localhost:8088/menuItems`)
-    //             .then(response => response.json())
-    //             .then((menuItemsArray) => {
-    //                 setMenuItems(menuItemsArray)
-    //             })
-    //     },
-    //     []
-    // )
-
-
-
-// parent container includes
-
+    const bankTotal = () => {
+        const completedShops = shops.filter(shop => shop.dateCompleted?.length > 1 ) //back to all tickets 
+        const total = completedShops.reduce((accumulator, currentValue) => {
+            return accumulator + currentValue.rate;
+        }, 0);
+        return total
+    }
 
 
 
     return <> 
+        <div className="bank">
+            Shopping Cart Total $ {bankTotal()}
+        </div>
     <div>
 
 
-    <legend className="title">Shopping List</legend>
+
 
         {
             honeyUserObject.staff 
             ? <>
-                 <button onClick={ () => { setEmergency(true) }} className="pray_bitch">Emergency Only</button>
-                 <button onClick={ () => { setEmergency(false) }} className="pray_bitch">Show All</button>
+            <button onClick={() => updateOpenOnly(true)} className="pray_bitch">unpurchased Items</button>
+                <button onClick={() => updateOpenOnly(false)} className="pray_bitch">All Items</button>
             </>
             : <>
                 <button onClick={() => navigate("/shop/create")} className="pray_bitch">Add new item</button>
-                <button onClick={() => updateOpenOnly(true)} className="pray_bitch">unpurchased Items</button>
-                <button onClick={() => updateOpenOnly(false)} className="pray_bitch">All Items</button>
-
+                <button onClick={ () => { setEmergency(true) }} className="pray_bitch">Need it now</button>
+                <button onClick={ () => { setEmergency(false) }} className="pray_bitch">Show All</button>
             </>
         }
-       
+    
         <fieldset className="please" >
-     
+
+        <legend className="title">Shopping List</legend>
+    
         <article className="shops">
 
             {
@@ -209,55 +203,6 @@ export const ShopList = ({ searchTermState }) => {  // theres the searchTermStat
         </article>
         </fieldset>
         </div>
+
     </>
 }
-
-
-///////each child in a list should have a unique key warning///////////////
-//// add key property to <section> key={`ticket--${ticket.id}`} ///////////
-
-
-//////////// <button>
-                               //onClick toggles setEmergency from false, to true when button is clicked 
-                               // *3000/ticket* devTools -> components -> ticketList -> hooks -> state -> switches from false to true
-                                   //  <button
-                                   //   onClick={
-                                   //       () => {
-                                   //           setEmergency(true)
-                                   //       }
-                                   //   }
-                                   //   >Emergency Only</button>
-
-                               // if there is more then one button they must be grouped  
-                               // parent react fragment for both buttons 
-                               //     { honeyUserObject.staff ?<>    ***button1***button2*** </> :***customer button***       }    
-                               
-                               
-                               // customer button navigates to new screen
-                               // updateOpenOnly(true) lets you view only the tickets that have yet to be taken care of
-
-/////////// .map
-                                //basic jsx(syntax to create elements) for displaying the state ^
-                                // using interpolation in react no need for $  
-                                // iterating the entire array of objects through map array method 
-                                // map array method converts items into arrays - conversion tool to html representation
-                                // call back function with ticket in the ()
-                                // for each (ticket) => { return this html representation of a ticket}
-                                // without return key you will see nothing 
-                                // ternary statement -> emergency true or false -> condensed if/else statement
-
-
-/////////////////////////////////////////////////////////////////////////////////////
-// to see tickets via dev tools components -> TicketList -> hooks -> state //////////
-/////////////////////////////////////////////////////////////////////////////////////
-
-
-//////tickets
-
-                                //  export const ticket list is sent to application views which includes
-
-                                // console.log("Initial state of tickets", tickets) // View the initial state of tickets
-                                // when inside use effect ^
-
-
-//// this is the initial state ///

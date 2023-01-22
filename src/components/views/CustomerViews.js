@@ -26,8 +26,8 @@ export const CustomerViews = () => {
         <Routes>
             <Route path="/" element={
                     <div>
-                    <h1>Responsibly Irresponsible</h1>
-                    <div>are you ready to live your life luxuriously?</div>
+                    {/* <h1>Responsibly Irresponsible</h1>
+                    <div>are you ready to live your life luxuriously?</div> */}
 
                     <Outlet />
                 </div>
@@ -37,7 +37,7 @@ export const CustomerViews = () => {
                                             {/* customer doesn't need to view the ticketContainer, just the ticket list, no need to tag the parent */}
                 <Route path="ticket/create" element={ <TicketForm /> } />
                                              {/* links to ticket form page. found under TicketList & Ticket */}
-                <Route path="profile" element={ <Profile /> } />
+                {/* <Route path="profile" element={ <Profile /> } /> */}
 
                 <Route path="tickets/:ticketId/edit" element={ <TicketEdit /> } />
 
@@ -52,33 +52,3 @@ export const CustomerViews = () => {
         </Routes>
     )
 }
-
-
-
-
-
-
-
-
-
-
-//  starter code below
-// export const ApplicationViews = () => {
-// 	return <>
-// 		<h1 className="title--main">Honey Rae Repairs</h1>
-// 		<div>Your one-stop shop for repairing your tech</div>
-// 	</>
-// }
-
-{/* <Route path="tickets" element={ 
-    <>
-        <TicketSearch />
-        <TicketList />
-    </>
-} /> */}
-                            // route used before parent was made in ticketContainer
-                            // links to tickets page & ticket search for employees - now two components - > changes to react fragment and now siblings*/}
-                            // Ticket list and ticket search cannot talk to each other without a parent - they arent inside each other they are next to each other
-                           ///  ****parent is made in ticketContainer******  
-
-        

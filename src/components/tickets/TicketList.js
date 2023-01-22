@@ -45,19 +45,7 @@ export const TicketList = ({ searchTermState }) => {  // theres the searchTermSt
     const honeyUserObject = JSON.parse(localHoneyUser) 
                     // devtools -> application -> storage -> localhost -> now shows the value of staff and id under it 
 
-    useEffect(      // to observe state from parent  & filter down to what is typed into search tab
-        () => {                         //filter original tickets
-            const searchedTickets = tickets.filter(ticket => {
-                return ticket.description.toLowerCase().startsWith(searchTermState.toLowerCase())
-            
-            }) //for each ticket, lets return => ticket.description starts with the searchTermState we got from the parent, a
-            setFiltered(searchedTickets) //updating filtered tickets
-        },
-        [ searchTermState ]
-    )
-    // devTools components -> ticketList -> props -> searchTermState: ""     <-shows in parentheses what you are currently typing
-    // if you console.log(searchTermState) in the use effect it will show everything typed into the search in the console log
-    
+
     useEffect(
         () => {
             if (emergency) { // only if its an emergency
@@ -158,7 +146,7 @@ export const TicketList = ({ searchTermState }) => {  // theres the searchTermSt
                 const completedTickets = tickets.filter(ticket => ticket.dateCompleted?.length > 1 ) //back to all tickets 
                 const total = completedTickets.reduce((accumulator, currentValue) => {
                     return accumulator + currentValue.rate;
-                  }, 0);
+                }, 0);
         return total
     }
 
@@ -169,28 +157,27 @@ export const TicketList = ({ searchTermState }) => {  // theres the searchTermSt
 
 
     return <> 
-        <fieldset className="top">
-        <legend className="title">Todo List</legend>
 
-        {
-            honeyUserObject.staff 
-            ? <>
-                 <button onClick={ () => { setEmergency(true) }} className="pray_bitch" >Emergency Only</button>
-                 <button onClick={ () => { setEmergency(false) }} className="pray_bitch" >Show All</button>
-            </>
-            : <>
+        <div className="bank"> 
+        Bank Total $ {bankTotal()}
+        </div>
+        <fieldset className="top">
+    
+
+    <div className="eleven">
+    
                 <button onClick={() => navigate("/ticket/create")} className="pray_bitch">Add New Todo</button>
                 {/* <button onClick={() => updateOpenOnly(true)}>Open Ticket</button>
                 <button onClick={() => updateOpenOnly(false)}>All Todo List Items </button> */}
                 <button onClick={() => { setEmergency(true) }} className="pray_bitch"> Daily Only</button>
                 <button onClick={() => { setEmergency(false)}} className="pray_bitch"> Show All </button>
-
-            </>
-        }
+        
+            </div>
+    
         </fieldset>
         
 
-       
+        <legend className="title">Todo List</legend> 
         <article className="tickets">
             {
                 filteredTickets.map(
@@ -202,59 +189,7 @@ export const TicketList = ({ searchTermState }) => {  // theres the searchTermSt
                 )
             }
         </article>
-        <div> 
-          Bank Total:  {bankTotal()}
-        </div>
+
         
     </>
 }
-
-
-///////each child in a list should have a unique key warning///////////////
-//// add key property to <section> key={`ticket--${ticket.id}`} ///////////
-
-
-//////////// <button>
-                               //onClick toggles setEmergency from false, to true when button is clicked 
-                               // *3000/ticket* devTools -> components -> ticketList -> hooks -> state -> switches from false to true
-                                   //  <button
-                                   //   onClick={
-                                   //       () => {
-                                   //           setEmergency(true)
-                                   //       }
-                                   //   }
-                                   //   >Emergency Only</button>
-
-                               // if there is more then one button they must be grouped  
-                               // parent react fragment for both buttons 
-                               //     { honeyUserObject.staff ?<>    ***button1***button2*** </> :***customer button***       }    
-                               
-                               
-                               // customer button navigates to new screen
-                               // updateOpenOnly(true) lets you view only the tickets that have yet to be taken care of
-
-/////////// .map
-                                //basic jsx(syntax to create elements) for displaying the state ^
-                                // using interpolation in react no need for $  
-                                // iterating the entire array of objects through map array method 
-                                // map array method converts items into arrays - conversion tool to html representation
-                                // call back function with ticket in the ()
-                                // for each (ticket) => { return this html representation of a ticket}
-                                // without return key you will see nothing 
-                                // ternary statement -> emergency true or false -> condensed if/else statement
-
-
-/////////////////////////////////////////////////////////////////////////////////////
-// to see tickets via dev tools components -> TicketList -> hooks -> state //////////
-/////////////////////////////////////////////////////////////////////////////////////
-
-
-//////tickets
-
-                                //  export const ticket list is sent to application views which includes
-
-                                // console.log("Initial state of tickets", tickets) // View the initial state of tickets
-                                // when inside use effect ^
-
-
-//// this is the initial state ///
