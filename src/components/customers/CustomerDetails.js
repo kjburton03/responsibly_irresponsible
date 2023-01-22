@@ -20,12 +20,12 @@ export const CustomerDetails = () => {
         [customerId]
     )
     return <section className="employee" >
-         
-           <header className="employee__header">{customer?.user?.fullName}</header>
-           <div>Email: {customer?.user?.email}</div>
-           <div>Address: {customer.address}</div>
-           <div>Phone Number: {customer.phoneNumber}</div>
-           <footer className="employee__footer">Currently working On {customer?.serviceTickets?.length} to-do list items</footer>
+    
+        <header className="employee__header">{customer?.user?.fullName}</header>
+        <div>Email: {customer?.user?.email}</div>
+        <div>Address: {customer.address}</div>
+        <div>Phone Number: {customer.phoneNumber}</div>
+        <footer className="employee__footer">Currently working On {customer?.serviceTickets?.length} to-do list items</footer>
         </section>
 }
 // optional chaining operator ---- employee?.user?. 

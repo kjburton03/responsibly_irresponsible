@@ -2,12 +2,14 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
-    background-color: #EAF4F4;
+    background-color: black;
     padding: 1.4rem;
     border: .4rem;
-    border-color: #061C14;
-    border-style: ridge;
-    color: #B7E4C7;
+    border-color: #202020;
+    border-style: double;
+    color: whitesmoke;
+    margin: 0;
+    margin-left: -5%;
     
 }
 
@@ -21,7 +23,7 @@
 }
 
 .navbar__link:visited {
-    color: #6B9080;
+    color:cornsilk;
 
 }
 

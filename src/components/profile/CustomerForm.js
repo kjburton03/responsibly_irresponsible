@@ -9,11 +9,9 @@ export const CustomerForm = () => {
     })
 
     const localHoneyUser = localStorage.getItem("honey_user")
-    //  grabs honey_user out of storage
-    // ^string, needs to be converted into an objext
     const honeyUserObject = JSON.parse(localHoneyUser) 
     // devtools -> application -> storage -> localhost -> now shows the value of staff and id under it 
-    //stole from ticketList.js/////////////////
+    //stole from ticketList.js
 
     // TODO: Get employee profile info from API and update state
     useEffect(() => {
@@ -32,14 +30,14 @@ export const CustomerForm = () => {
             TODO: Perform the PUT fetch() call here to update the profile.
             Navigate user to home page when done.
         */
-       return fetch(`http://localhost:8088/customers/${profile.id}`, {
+    return fetch(`http://localhost:8088/customers/${profile.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(profile)
 
-       })
+    })
             .then(response => response.json())
             .then(() => {
                 setFeedback("Customer profile successfully saved")

@@ -59,7 +59,8 @@ export const Shop = ({shopObject, currentUser, customers, getAllShops}) => {
             img: shopObject.img,
             website: shopObject.shopWebsite,
             emergency: shopObject.emergency,
-            dateCompleted: new Date()
+            dateCompleted: new Date() ,
+            rate: shopObject.rate
 
         }
 
@@ -76,35 +77,6 @@ export const Shop = ({shopObject, currentUser, customers, getAllShops}) => {
 
     }
 
-    const buttonOrNoButton = () => {
-        if (!currentUser.staff) {
-            return <button 
-                     onClick={() => {
-                        fetch(`http://localhost:8088/customerShops`, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify({
-                                employeeId: userCustomer.id, // was currentUser.id but that returns undefined. video saved for future help... claiming tickets in capstone needs find operattion, id and user id must match
-                                serviceShopId: shopObject.id
-                            })
-                        })
-                            .then(response => response.json()) //network-> 201
-                            .then(() => {
-                                //GET the state from the API again
-                                getAllShops()
-                            }) 
-                     }}
-                    >add to bag</button>
-        }
-        else {
-            return ""
-        }
-    }
-
-    //footer and header both have conditional logic
-    // button does fetch to get api state and modify it , gets new data and rerenders all tickets 
     return <section className="shop" key={`shop--${shopObject.id}`} >
         <header>
             {
@@ -117,63 +89,12 @@ export const Shop = ({shopObject, currentUser, customers, getAllShops}) => {
         </header> 
         {/* <section>{shopObject.description}</section> */}
         <section>Cost $ {shopObject.rate} </section>
-        {/* <section>
-                <div >
-                    <label htmlFor="name"></label>
-                    <input type="checkbox"
-                        value={shopObject.rate}
-                        onChange={
-                            (evt) => {
-                                const copy = {...shopObject}
-                                copy.rate = evt.target.checked
-                                update(copy)
-                            }
 
-                        } />
-                </div>
-            </section> */}
-
-        {/* <fieldset>
-                <div className="classic-menu-form-group">
-
-                    {menuItems.map(menuItem => {
-
-                        return <>
-                            <div className="classic_menu_label_and_input_container">
-                                <input
-                                    required autoFocus
-                                    className="form-control"
-                                    id="menu-form-control"
-                                    key={`menu_choice--${menuItem.id}`}
-                                    type="radio"
-                                    name="classic_menu_item"
-                                    value={menuItem.id}
-                                    onChange={
-                                        (evt) => {
-                                            const copy = { ...setMenuItemChoices }
-                                            copy.menuItemId = parseInt(evt.target.value)
-                                            setMenuItemChoices(copy)
-                                        }}
-                                />
-                                <label htmlFor="classic menu">{menuItem.name}, ${menuItem.price.toFixed(2)}</label>
-                            </div>
-                        </>
-                    })}
-                </div>
-            </fieldset> */}
-            
         <section>  {shopObject.shopWebsite}</section>
-        <section> Need asap: {shopObject.emergency ? "figure it out" : "nah"}</section>
-      
+        <section>  {shopObject.emergency ? " " : "✖️"} Need Asap</section>
+
         <footer>
-            {/* {
-                shopObject.employeeShops.length
-                    ? `currently being worked on by ${assignedEmployee !== null ? assignedEmployee?.user?.fullName : ""}`
-                    : buttonOrNoButton()
-            } */}
-            {/* {
-                finished  {employee?.employeeTickets?.length} todo items
-            } */}
+        
             {
                 shopObject.customerTickets
             }
@@ -189,37 +110,3 @@ export const Shop = ({shopObject, currentUser, customers, getAllShops}) => {
     
     </section>
 }
-
-// button has nested ternary objects turned into a function to return the correct thing.
-{/* <footer>
-{
-    ticketObject.employeeTickets.length
-        ? `currently being worked on by ${assignedEmployee !== null ? assignedEmployee?.user?.fullName : ""}`
-        : <button 
-         onClick={() => {
-            fetch(`http://localhost:8088/employeeTickets`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    employeeId: userEmployee.id, // was currentUser.id but that returns undefined. video saved for future help... claiming tickets in capstone needs find operattion, id and user id must match
-                    serviceTicketId: ticketObject.id
-                })
-            })
-                .then(response => response.json()) //network-> 201
-                .then(() => {
-                    //GET the state from the API again
-                    getAllTickets()
-                }) 
-         }}
-        >Claim</button>
-}
-</footer> */}
-
-
-// //        <header>
-// <Link to={`/tickets/${ticketObject.id}/edit`}>Ticket {ticketObject.id} </Link>
-// </header>
-// <section>{ticketObject.description}</section>
-// <footer>Emergency: {ticketObject.emergency ? "duh" : "Nuh"}</footer>

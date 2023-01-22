@@ -1,44 +1,18 @@
 .shops {
     display: flex;
     flex-direction: column;
-    background-color: #CCE3DE;
-
-}
-
-.shop {
-    background-color: #1b4332;
-    border: 2px groove #a5c3b2;
-    padding: 0.2rem;
-    margin: 0.9rem 3.6rem ;
-   
-    
-    width: 350px;
-    border-radius: 10px;
-    color:#95D5B2
+    background-color: black;
+    border-radius: 2%;
+    border-color: #c6920eb7;
+    border-width: .2rem;
+    border-style:groove;
+    width: 40rem;
+    height: 21.7rem;
+    margin-top: 7rem;
+    margin-left: 10rem;
+    overflow:scroll;
     
 
-}
-.title {
-    font-size: 39px;
-}
-
-
-
-.shop__delete {
-    margin-left: auto;
-    background-color: #CCE3DE;
-}
-
-.shop__finish {
-    margin-left: auto;
-    background-color: #CE3DEF;
-}
-
-.shop__footer {
-    display: flex;
-    padding: 1rem 0 0 0 ;
-    border-top: 1px dashed darkmagenta;
-    margin: 1rem 0 0 0;
 }
 
 .shop__header {
@@ -46,6 +20,73 @@
     padding: 0;
     background-color: crimson;
 }
+
+
+.bank {
+    border-color: #1B4332;
+    color: black;
+    background-color: whitesmoke;
+    opacity: 0.5;
+    
+    margin: 0 3rem;
+    padding: .5rem;
+    font-size: 30px;
+    text-align: justify;
+    border-color: rgb(108, 93, 12);
+    border-style: double;
+    border-radius: 40% 10% 230% 10%;
+}
+
+.shop {
+    background-color: #202020;
+    border: 2px groove #a5c3b2;
+    padding: 0.2rem;
+    margin: 0.9rem 3.6rem ;
+    color: whitesmoke;
+    width: 350px;
+    border-radius: 10px;
+    font-size: large;
+    
+
+}
+
+.shop:visited {
+    color:pink;
+    font-size: xx-large;
+    text-decoration: dashed;
+} 
+.title {
+    font-size: 30px;
+    margin-left: 25rem;
+  
+}
+
+
+
+.shop__delete {
+    margin-left: auto;
+    background-color: #252525;
+    color: whitesmoke;
+}
+
+.shop__finish {
+    margin-left: auto;
+    background-color: #252525;
+    color: whitesmoke;
+}
+
+.shop__footer {
+    display: flex;
+    padding: 1rem 0 0 0 ;
+    border-top: 1px dashed #252525;
+    margin: 1rem 0 0 0;
+}
+
+/* .shop__header {
+    font-size: large;
+    padding: 0;
+    background-color: crimson;
+} */
 
 /* .please {
     background-color: #2d6a4f;
@@ -56,15 +97,20 @@
 } */
 
  .pray_bitch {
-    background-color: #1B4332;
+    background-color: #151515;
     padding: 1.3rem;
     margin: 1rem;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     color: #B7E4C7;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif, 'Times New Roman', Times, serif;
+    margin-left: 6rem;
 } 
 
 .shop_top{
-    background-color: #2d6a4f;
+    background-color: gray;
+}
+
+.shop__form {
+    background-color: black;
 }

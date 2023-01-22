@@ -20,14 +20,14 @@ export const EmployeeDetails = () => {
         [employeeId]
     )
     return <section className="employee" >
-         
-           <header className="employee__header">{employee?.user?.fullName}</header>
-           <div>Email: {employee?.user?.email}</div>
-           <div>Specialty: {employee.specialty}</div>
-           <div>Price: {employee.rate}</div>
-          
-           <footer className="employee__footer"> finished  {employee?.employeeTickets?.length} todo items</footer>
-          
+        
+        <header className="employee__header">{employee?.user?.fullName}</header>
+        <div>Email: {employee?.user?.email}</div>
+        <div>Specialty: {employee.specialty}</div>
+        <div>Price: {employee.rate}</div>
+        
+        <footer className="employee__footer"> finished  {employee?.employeeTickets?.length} todo items</footer>
+        
         </section>
 }
 // optional chaining operator ---- employee?.user?. 
@@ -35,4 +35,3 @@ export const EmployeeDetails = () => {
 //  dont forget 
 
 
- // ^^ footer could be used for stretch goal of showing what things are or  

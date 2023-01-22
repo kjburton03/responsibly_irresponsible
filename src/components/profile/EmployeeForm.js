@@ -13,7 +13,7 @@ export const EmployeeForm = () => {
     // ^string, needs to be converted into an objext
     const honeyUserObject = JSON.parse(localHoneyUser) 
     // devtools -> application -> storage -> localhost -> now shows the value of staff and id under it 
-    //stole from ticketList.js/////////////////
+    //stole from ticketList.js//
 
     // TODO: Get employee profile info from API and update state
     useEffect(() => {
@@ -32,14 +32,14 @@ export const EmployeeForm = () => {
             TODO: Perform the PUT fetch() call here to update the profile.
             Navigate user to home page when done.
         */
-       return fetch(`http://localhost:8088/employees/${profile.id}`, {
+    return fetch(`http://localhost:8088/employees/${profile.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(profile)
 
-       })
+    })
             .then(response => response.json())
             .then(() => {
                 setFeedback("Employee profile successfully saved")

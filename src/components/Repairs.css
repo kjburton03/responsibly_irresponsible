@@ -1,29 +1,54 @@
 /* Import the google web fonts you want to use */
-@import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+/* @import url("https://fonts.googleapis.com/css?family="); */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,700&family=Shadows+Into+Light&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,700&family=Shadows+Into+Light&display=swap');
 
 /*Typography
 --------------------------------------------------------------*/
 body,
-button,
-input,
-select,
-textarea {
-  color: #1B4332;
-  background-color: #EAF4F4;
-  font-family: "Comfortaa", Arial, sans-serif;
+
+ 
+select
+ {
+  color: whitesmoke;
+  
   font-size: 14px;
   line-height: 1.5;
+  /* background-image: url(https://i.imgur.com/Zn5h15c.png); */
+  background-image: url(https://i.imgur.com/BDqUExF.png);
+  background-size: no-repeat;
+ 
 }
 
+button,
+input,
+textarea {
+  color: black;
+  font-style:italic;
+}
 body {
     padding: 0 3rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Georgia, 'Times New Roman', Times, serif, serif;
+
   letter-spacing: 2px;
+
+  color:whitesmoke
+  
 }
 
+link:visited {
+  color: whitesmoke;
+}
+
+legend {
+  color: rgb(246, 242, 237);
+
+
+}
 p {
   margin-bottom: 1.5em;
 }
@@ -32,3 +57,6 @@ p {
   margin-block-end: 0;
 }
 
+.registerbox {
+  background-color: black;
+}

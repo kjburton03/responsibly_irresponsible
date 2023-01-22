@@ -1,25 +1,52 @@
 .tickets {
     display: flex;
     flex-direction: column;
-    background-color: #CCE3DE;
+    background-color: black;
+    border-radius: 2%;
+    border-color: #c6920eb7;
+    border-width: .2rem;
+    border-style:groove;
+    width: 40rem;
+    height: 21.7rem;
+    margin-top: 7rem;
+    margin-left: 10rem;
+    
+    overflow:scroll;
+    
+}
+.bank {
+    border-color: gold;
+    color: whitesmoke;
+    background-color: #082010;
+    margin: 0 3rem;
+    padding: 1rem;
+    font-size: 40px;
+    border-width: 1rem;
 }
 
+/* actual ticket */
 .ticket {
-    background-color: #1b4332;
+    background-color: #202020;
     border: 2px groove #a5c3b2;
     padding: 0.2rem;
     margin: 0.9rem 3.6rem ;
-   
-    
+    color: whitesmoke;
     width: 350px;
     border-radius: 10px;
-    color:#95D5B2
+    font-size: large;
+    
     
 }
 
+/* .ticket:visited {
+    color: white;
+} */
+
 .title {
-    font-size: 39px;
-    margin-left: 9rem;
+    
+    margin-left: 35rem;
+    margin-bottom: 0;
+    margin-top: 1.9rem;
 }
 
 /* .top {
@@ -28,11 +55,14 @@
 
 .ticket__delete {
     margin-left: auto;
-    background-color: #CCE3DE;
+    background-color: #252525;
+    color: whitesmoke;
 }
 
 .ticket__finish {
     margin-left: auto;
+    background-color: #252525;
+    color: whitesmoke;
 }
 
 .ticket__footer {
@@ -45,8 +75,9 @@
 .ticket__header {
     font-size: large;
     padding: 0 0 1rem 0;
+    margin-left: 6rem;
 }
-
+ 
 .send_prayer {
     border-color: chartreuse;
     border-width: 1rem;
@@ -54,11 +85,14 @@
 }
 
 .pray_bitch {
-    background-color: #1B4332;
-    padding: 1.3rem;
-    margin: 1rem;
+    background-color: pink;
+    padding: 1rem;
+    margin-left: 5rem;
     flex-direction: row;
     justify-content: center;
-    color: #B7E4C7;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: blanchedalmond;
+    
+
+    
 }
+
