@@ -17,7 +17,7 @@ select
   font-size: 14px;
   line-height: 1.5;
   /* background-image: url(https://i.imgur.com/Zn5h15c.png); */
-  background-image: url(https://i.imgur.com/BDqUExF.png);
+  background-image: url(https://i.imgur.com/xEfgAb9.jpg);
   background-size: no-repeat;
  
 }
@@ -59,4 +59,5 @@ p {
 
 .registerbox {
   background-color: black;
+  opacity: 50%;
 }

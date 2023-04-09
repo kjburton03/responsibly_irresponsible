@@ -1,4 +1,3 @@
-//////instructions on adding new page to website at the bottom
 import { Link, useNavigate } from "react-router-dom"
 import "./NavBar.css"
 
@@ -23,10 +22,10 @@ export const EmployeeNav = () => {
                 <Link className="navbar__link" to="/shops">Shop</Link>
             </li>
             {
-                localStorage.getItem("honey_user")
+                localStorage.getItem("responsible_user")
                     ? <li className="navbar__item navbar__logout">
                         <Link className="navbar__link" to="" onClick={() => {
-                            localStorage.removeItem("honey_user")
+                            localStorage.removeItem("responsible_user")
                             navigate("/", {replace: true})
                         }}>Logout</Link>
                     </li>

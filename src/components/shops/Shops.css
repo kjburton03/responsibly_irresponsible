@@ -1,16 +1,36 @@
 .shops {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* display: flex; */
+    /* flex-direction: column; */
     background-color: black;
     border-radius: 2%;
     border-color: #c6920eb7;
     border-width: .2rem;
     border-style:groove;
-    width: 40rem;
+    width: 60rem;
+    height: 21.7rem;
+    /* margin-top: 7rem;
+    margin-left: 10rem; */
+    margin: 0 auto;
+    /* margin-top: -200; */
+    overflow:scroll;
+    padding-bottom: 50;
+    border: inset;
+    opacity: 75%;
+    color: green
+    
+
+}
+.buttons {
+    /* display: flex; */
+    justify-content: center;
+    width: 60rem;
     height: 21.7rem;
     margin-top: 7rem;
     margin-left: 10rem;
-    overflow:scroll;
     
 
 }
@@ -22,7 +42,7 @@
 }
 
 
-.bank {
+/* .bank {
     border-color: #1B4332;
     color: black;
     background-color: whitesmoke;
@@ -35,17 +55,31 @@
     border-color: rgb(108, 93, 12);
     border-style: double;
     border-radius: 40% 10% 230% 10%;
-}
+} */
+.bank {
+    background-color: #fffef2;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    z-index: 9999;
+  }
 
 .shop {
     background-color: #202020;
-    border: 2px groove #a5c3b2;
+    border: 2px inset #a5c3b2;
     padding: 0.2rem;
-    margin: 0.9rem 3.6rem ;
-    color: whitesmoke;
+    /* margin: 0.9rem 3.6rem ; */
+    color: red;
     width: 350px;
     border-radius: 10px;
     font-size: large;
+    opacity: 100%;
     
 
 }
@@ -56,9 +90,11 @@
     text-decoration: dashed;
 } 
 .title {
-    font-size: 30px;
+    font-size: 50px;
     margin-left: 25rem;
-  
+    font-family: fantasy;
+    font-weight: 300;
+    color: black;
 }
 
 
@@ -96,12 +132,12 @@
     
 } */
 
- .pray_bitch {
+ .button {
     background-color: #151515;
     padding: 1.3rem;
     margin: 1rem;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: middle;
     color: #B7E4C7;
     font-family: Georgia, 'Times New Roman', Times, serif, 'Times New Roman', Times, serif;
     margin-left: 6rem;

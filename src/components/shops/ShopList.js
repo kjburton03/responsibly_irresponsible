@@ -1,48 +1,32 @@
-//////////stuff to find in here //////////////
-// ticketList 
-// warning: each child in a list should have a unique "key" prop
-//////////////////////////////////////////////
-// first page of project
-// step 1 imports from react , export TicketList with const[] = useState, useEffect to show the state , & html return
-
-
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Shop } from "./Shop"
-                    //  useState is function to store the state in a component. The function returns an array. The array contains the intial state value at index 0 and a function that modifies the state at index 1.
-                    //  useEffect is function to observe state.  and run some instructions when state changes.
 import "./Shops.css"
-                    // css for just the ticket list classNames tickets and ticket
 
 
 
-export const ShopList = ({ searchTermState }) => {  // theres the searchTermState key , its value is the actual state from the parent, the search terms themselves -not a direct state variable - neeeds a use effect
+
+export const ShopList = ({ searchTermState }) => {  
     const [shops, setShops] = useState([])
-                    //  initial state value at index 0 & function that modifies the state at index 1 via a 
-                    // tickets has a value of an empty array.
-                    //   setTickets has a value of a function. function to change state 
+
     const [filteredShops, setFiltered] = useState([])
-                    // not modifyind the array of tickets, of displaying certain tickets 
-                    // use useEffect to decide what is shown
+
     const [employees, setEmployees] = useState([])
 
     const [emergency, setEmergency] = useState(false)
-                    //  tracking whether or not we need emergency to be listed via another state variable
-                    // dont want to show emergency only tickets first so state is set to false -> needs toggle in button via onClick
+
     const [openOnly, updateOpenOnly] = useState(false)
-                    // shows only tickets that have yet to be completed by staff in the customer view 
-    
 
     
-    const navigate = useNavigate() //navigate to new tickets form etc.  //// forgot the () at first... long search 
+
+    
+    const navigate = useNavigate() 
 
 
 
-
-    const localHoneyUser = localStorage.getItem("honey_user")
-                    //  grabs honey_user out of storage
-                    // ^string, needs to be converted into an objext
-    const honeyUserObject = JSON.parse(localHoneyUser) 
+    const localResponsibleUser = localStorage.getItem("responsible_user")
+       
+    const responsibleUserObject = JSON.parse(localResponsibleUser) 
                     // devtools -> application -> storage -> localhost -> now shows the value of staff and id under it 
 
     useEffect(      // to observe state from parent  & filter down to what is typed into search tab
@@ -102,26 +86,20 @@ export const ShopList = ({ searchTermState }) => {  // theres the searchTermStat
                         
                     }) 
         },
-        []          // When this array is empty, you are observing initial component state
+        []
     )
 
 
-
-
-
-
-
-                    //when ticket state changes use a useEffect to decide whether to show the user all tickets or only their tickets
         useEffect(
             () => {
-                if(honeyUserObject.staff) {
+                if(responsibleUserObject.staff) {
                     // employees
                     setFiltered(shops)
                     //shows all tickets through setFiltered state ... i think 
                 }
                 else {
                     // customers
-                    const myShops = shops.filter(shop => shop.userId === honeyUserObject.id)
+                    const myShops = shops.filter(shop => shop.userId === responsibleUserObject.id)
                     
                     // filters throught all tickets then shows only the tickets that customerID's matches user's id
                     setFiltered(myShops)
@@ -137,13 +115,13 @@ export const ShopList = ({ searchTermState }) => {  // theres the searchTermStat
         () => {  //function -> if openOnly 
             if (openOnly) { 
                 const openShopArray =  shops.filter(shop => {
-                    return shop.userId === honeyUserObject.id && shop.dateCompleted === ""   // if the tickets user id matches with the json id    if you change it to !== the opposite will happen
+                    return shop.userId === responsibleUserObject.id && shop.dateCompleted === ""   // if the tickets user id matches with the json id    if you change it to !== the opposite will happen
                                                                                                  // anddd the tickets date completed is not an empty string
             })
             setFiltered(openShopArray)  // shows opened tickets 
             }
             else {
-                const myShops = shops.filter(shop => shop.userId === honeyUserObject.id) //back to all tickets 
+                const myShops = shops.filter(shop => shop.userId === responsibleUserObject.id) //back to all tickets 
                 
                 setFiltered(myShops) //brings it back 
 
@@ -171,24 +149,26 @@ export const ShopList = ({ searchTermState }) => {  // theres the searchTermStat
     <div>
 
 
-
-
-        {
-            honeyUserObject.staff 
-            ? <>
-            <button onClick={() => updateOpenOnly(true)} className="pray_bitch">unpurchased Items</button>
-                <button onClick={() => updateOpenOnly(false)} className="pray_bitch">All Items</button>
-            </>
-            : <>
-                <button onClick={() => navigate("/shop/create")} className="pray_bitch">Add new item</button>
-                <button onClick={ () => { setEmergency(true) }} className="pray_bitch">Need it now</button>
-                <button onClick={ () => { setEmergency(false) }} className="pray_bitch">Show All</button>
-            </>
-        }
-    
         <fieldset className="please" >
 
         <legend className="title">Shopping List</legend>
+
+        <div className="buttons">
+
+<h1> </h1>
+    {
+        responsibleUserObject.staff 
+        ? <>
+        <button onClick={() => updateOpenOnly(true)} className="button">unpurchased Items</button>
+            <button onClick={() => updateOpenOnly(false)} className="button">All Items</button>
+        </>
+        : <>
+            <button onClick={() => navigate("/shop/create")} className="button">Add new item</button>
+            <button onClick={ () => { setEmergency(true) }} className="button">Need it now</button>
+            <button onClick={ () => { setEmergency(false) }} className="button">Show All</button>
+        </>
+    }
+</div>
     
         <article className="shops">
 
@@ -196,7 +176,7 @@ export const ShopList = ({ searchTermState }) => {  // theres the searchTermStat
                 filteredShops.map(
                     (shop) => <Shop employees={employees} 
                         getAllShops={getAllShops} //same prop name as function reference
-                        currentUser={honeyUserObject} 
+                        currentUser={responsibleUserObject} 
                         shopObject={shop} />
                 )
             }
