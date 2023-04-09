@@ -20,24 +20,18 @@ export const TicketForm = () => {
 
     const navigate = useNavigate()  //to send tickets to api ... variable that is a function
 
-    const localHoneyUser = localStorage.getItem("honey_user")
-    const honeyUserObject = JSON.parse(localHoneyUser)
+    const localResponsibleUser = localStorage.getItem("responsible_user")
+    const responsibleUserObject = JSON.parse(localResponsibleUser)
 
     const handleSaveButtonClick = (event) => { //function for when button is clicked  to invoke the function, the parameter is defined as event
         event.preventDefault()
         // console.log("helllllo")  <--- shows that it is connected
 
         // TODO: Create the object to be saved to the API
-        // {
-        //     "id": 2,   <---json makes this
-        //     "userId": 3,
-        //     "description": "Vero est adipisci sed natus quasi consectetur occaecati. Modi maxime sunt officia cumque. Vel at culpa. Sint accusamus deserunt dolorem qui.",
-        //     "emergency": true,
-        //     "dateCompleted": ""
-        //   },  <----- what needs to be filled out to be sent to api 
+
 
         const ticketToSendToAPI = {                  // variable object to be saved to API   
-            userId: honeyUserObject.id,              //gets the id directly from the api ... i think it gets it from somewhere i dont have to worry about
+            userId: responsibleUserObject.id,              //gets the id directly from the api ... i think it gets it from somewhere i dont have to worry about
             description: ticket.description,            // comes from state variable ticket 
             rate: ticket.rate,
             emergency: ticket.emergency,
@@ -67,7 +61,7 @@ export const TicketForm = () => {
 
     return (
         <form className="ticketForm">
-            <h2 className="ticketForm__title">New Service Ticket</h2>
+            <h2 className="ticketForm__title">New to do list item</h2>
             <fieldset>
                 <div className="form-group"> 
                     <label htmlFor="description">Description:</label>
@@ -75,7 +69,7 @@ export const TicketForm = () => {
                         required autoFocus
                         type="text"
                         className="form-control"
-                        placeholder="Brief description of problem"
+                        placeholder="Brief description todo list item"
                         value={ticket.description}
                         onChange={
                             (evt) => {

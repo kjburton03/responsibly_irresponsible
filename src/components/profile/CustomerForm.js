@@ -8,14 +8,14 @@ export const CustomerForm = () => {
         userId: 0
     })
 
-    const localHoneyUser = localStorage.getItem("honey_user")
-    const honeyUserObject = JSON.parse(localHoneyUser) 
+    const localResponsibleUser = localStorage.getItem("responsible_user")
+    const responsibleUserObject = JSON.parse(localResponsibleUser) 
     // devtools -> application -> storage -> localhost -> now shows the value of staff and id under it 
     //stole from ticketList.js
 
     // TODO: Get employee profile info from API and update state
     useEffect(() => {
-        fetch(`http://localhost:8088/customers?userId=${honeyUserObject.id}`)
+        fetch(`http://localhost:8088/customers?userId=${responsibleUserObject.id}`)
             .then(response => response.json())
             .then((data) => {
                 const customerObject = data[0]

@@ -1,19 +1,301 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "fullName": "Dion Stoade",
+      "email": "dstoade0@cornell.edu",
+      "isStaff": false
+    },
+    {
+      "id": 4,
+      "fullName": "Helenelizabeth Passfield",
+      "email": "hpassfield7@netvibes.com",
+      "isStaff": true
+    },
+    {
+      "email": "kim_is_cool@yahoooooooooo.com",
+      "fullName": "Kimber",
+      "isStaff": false,
+      "id": 5
+    },
+    {
+      "email": "goKimberGo@goowy.com",
+      "fullName": "Kimber",
+      "isStaff": true,
+      "id": 6
     }
   ],
-  "comments": [
+  "customers": [
+    {
+      "id": 2,
+      "address": "56849 Fadel Gateway",
+      "phoneNumber": "202-244-7090",
+      "userId": 1
+    }
+  ],
+  "employees": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "specialty": "PC Repair and mac",
+      "rate": 83.47,
+      "userId": 4
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "serviceShops": [
+    {
+      "userId": 1,
+      "description": "Dresser",
+      "emergency": true,
+      "shopWebsite": "",
+      "rate": 775,
+      "dateCompleted": "",
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "description": "suitcase",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 75,
+      "dateCompleted": "",
+      "id": 2
+    },
+    {
+      "userId": 5,
+      "description": "work shoes",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 75,
+      "dateCompleted": "",
+      "id": 7
+    },
+    {
+      "userId": 5,
+      "description": "work out thingy",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 50,
+      "dateCompleted": "",
+      "id": 11
+    },
+    {
+      "userId": 5,
+      "description": "other workout thingy",
+      "emergency": true,
+      "shopWebsite": "",
+      "rate": 30,
+      "dateCompleted": "",
+      "id": 12
+    },
+    {
+      "userId": 5,
+      "description": "coding robot",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 80,
+      "dateCompleted": "",
+      "id": 13
+    },
+    {
+      "userId": 5,
+      "description": "dog food container",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 0,
+      "dateCompleted": "",
+      "id": 19
+    },
+    {
+      "userId": 5,
+      "description": "dog bowl",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 20,
+      "dateCompleted": "",
+      "id": 20
+    },
+    {
+      "userId": 5,
+      "description": "shoes",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 35,
+      "dateCompleted": "",
+      "id": 21
+    },
+    {
+      "userId": 5,
+      "description": "Golf Clubs",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 200,
+      "dateCompleted": "",
+      "id": 22
+    },
+    {
+      "userId": 5,
+      "description": "litter robot",
+      "emergency": true,
+      "shopWebsite": "",
+      "rate": 700,
+      "dateCompleted": "",
+      "id": 23
+    },
+    {
+      "userId": 5,
+      "description": "robot mop",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 400,
+      "dateCompleted": "",
+      "id": 24
+    },
+    {
+      "userId": 5,
+      "description": "dresser",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 900,
+      "dateCompleted": "",
+      "id": 25
+    },
+    {
+      "userId": 5,
+      "description": "volcano",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 400,
+      "dateCompleted": "",
+      "id": 26
+    },
+    {
+      "userId": 5,
+      "description": "grass",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 250,
+      "dateCompleted": "",
+      "id": 27
+    },
+    {
+      "userId": 5,
+      "description": "el mar",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 500,
+      "dateCompleted": "",
+      "id": 28
+    },
+    {
+      "userId": 5,
+      "description": "brows",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 100,
+      "dateCompleted": "",
+      "id": 29
+    },
+    {
+      "userId": 5,
+      "description": "hair",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 200,
+      "dateCompleted": "",
+      "id": 30
+    },
+    {
+      "userId": 5,
+      "description": "facial",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 90,
+      "dateCompleted": "",
+      "id": 31
+    },
+    {
+      "userId": 5,
+      "description": "massage",
+      "emergency": false,
+      "shopWebsite": "",
+      "rate": 100,
+      "dateCompleted": "",
+      "id": 32
+    }
+  ],
+  "serviceTickets": [
+    {
+      "userId": 5,
+      "description": "goodwill cleanout run",
+      "rate": 30,
+      "emergency": false,
+      "dateCompleted": "",
+      "id": 30
+    },
+    {
+      "userId": 5,
+      "description": "call doctor",
+      "rate": 30,
+      "emergency": false,
+      "dateCompleted": "",
+      "id": 32
+    },
+    {
+      "userId": 5,
+      "description": "python scrimba",
+      "rate": 45,
+      "emergency": false,
+      "dateCompleted": "",
+      "id": 33
+    },
+    {
+      "userId": 5,
+      "description": "mimo chapter",
+      "rate": 5,
+      "emergency": true,
+      "dateCompleted": "",
+      "id": 34
+    },
+    {
+      "userId": 5,
+      "description": "chapter in book",
+      "rate": 5,
+      "emergency": true,
+      "dateCompleted": "",
+      "id": 35
+    },
+    {
+      "userId": 5,
+      "description": "finish book",
+      "rate": 25,
+      "emergency": false,
+      "dateCompleted": "",
+      "id": 36
+    },
+    {
+      "userId": 5,
+      "description": "put all laundry away",
+      "rate": 35,
+      "emergency": false,
+      "dateCompleted": "",
+      "id": 37
+    },
+    {
+      "userId": 5,
+      "description": "install grass",
+      "rate": 250,
+      "emergency": false,
+      "dateCompleted": "",
+      "id": 38
+    },
+    {
+      "userId": 5,
+      "description": "15 bb",
+      "emergency": false,
+      "dateCompleted": "2023-04-08T23:08:45.185Z",
+      "rate": 500,
+      "id": 39
+    }
+  ],
+  "customerTickets": []
 }

@@ -8,16 +8,12 @@ export const EmployeeForm = () => {
         userId: 0
     })
 
-    const localHoneyUser = localStorage.getItem("honey_user")
-    //  grabs honey_user out of storage
-    // ^string, needs to be converted into an objext
-    const honeyUserObject = JSON.parse(localHoneyUser) 
-    // devtools -> application -> storage -> localhost -> now shows the value of staff and id under it 
-    //stole from ticketList.js//
+    const localResponsibleUser = localStorage.getItem("responsible_user")
+    const responsibleUserObject = JSON.parse(localResponsibleUser) 
 
     // TODO: Get employee profile info from API and update state
     useEffect(() => {
-        fetch(`http://localhost:8088/employees?userId=${honeyUserObject.id}`)
+        fetch(`http://localhost:8088/employees?userId=${responsibleUserObject.id}`)
             .then(response => response.json())
             .then((data) => {
                 const employeeObject = data[0]
@@ -53,8 +49,7 @@ export const EmployeeForm = () => {
                     setTimeout(() => setFeedback(""), 3000);
                 }
             }, [feedback])
-    
-     //// ^ devtools -> network -> clear network -> user enters new state -> 1 request URL to employee.id -. status code 200 ok means it works 
+
     return (
         <>
         <form className="profile">
@@ -86,11 +81,8 @@ export const EmployeeForm = () => {
                         onChange={
                             (evt) => {
                                 // TODO: Update rate property
-                                // even tho the type is number it will always return a string
-                                // unlessss you wrap it in a parse 
                                 const copy = {...profile}
-                                copy.rate = parseFloat(evt.target.value, 2) //float is for decimal, 2 is for        components -> applicationviews -> employeeviews -> profile -> employee form -> changes state
-                                //got initial state fethed from the api for the permanent state and updated the  component state and now capturing what the user did .next step saving
+                                copy.rate = parseFloat(evt.target.value, 2)   
                                 updateProfile(copy)
                             }
                         } />
@@ -105,7 +97,6 @@ export const EmployeeForm = () => {
         <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
     {feedback}
 </div>
-      </>  
+    </>  
     )
 }
-//// need <></> to add multiple things in return div & form

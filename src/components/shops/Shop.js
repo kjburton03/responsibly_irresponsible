@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import "./Shops.css"
 
 export const Shop = ({shopObject, currentUser, customers, getAllShops}) => {
     // .. Find the assigned employee for the current ticket 

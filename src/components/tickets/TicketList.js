@@ -39,11 +39,9 @@ export const TicketList = ({ searchTermState }) => {  // theres the searchTermSt
 
 
 
-    const localHoneyUser = localStorage.getItem("honey_user")
-                    //  grabs honey_user out of storage
-                    // ^string, needs to be converted into an objext
-    const honeyUserObject = JSON.parse(localHoneyUser) 
-                    // devtools -> application -> storage -> localhost -> now shows the value of staff and id under it 
+    const localResponsibleUser = localStorage.getItem("responsible_user")
+
+    const responsibleUserObject = JSON.parse(localResponsibleUser) 
 
 
     useEffect(
@@ -93,45 +91,30 @@ export const TicketList = ({ searchTermState }) => {  // theres the searchTermSt
         []          // When this array is empty, you are observing initial component state
     )
 
-
-
-
-
-
-
-                    //when ticket state changes use a useEffect to decide whether to show the user all tickets or only their tickets
         useEffect(
             () => {
-                if(honeyUserObject.staff) {
-                    // employees
+                if(responsibleUserObject.staff) {
                     setFiltered(tickets)
-                    //shows all tickets through setFiltered state ... i think 
                 }
                 else {
-                    // customers
-                    const myTickets = tickets.filter(ticket => ticket.userId === honeyUserObject.id)
+                    const myTickets = tickets.filter(ticket => ticket.userId === responsibleUserObject.id)
                     
-                    // filters throught all tickets then shows only the tickets that customerID's matches user's id
                     setFiltered(myTickets)
-                    // uses the new myTickets array to see them updated.. last step in the return
                 }
             },
             [tickets]
         )
-                     // the tickets do not change until useEffect [tickets] is applied. <--- state variables
-                     /////// useEffect is to observe state  
 
     useEffect(  // show only completed tickets
         () => {  //function -> if openOnly 
             if (openOnly) { 
                 const openTicketArray =  tickets.filter(ticket => {
-                    return ticket.userId === honeyUserObject.id && ticket.dateCompleted === ""   // if the tickets user id matches with the json id    if you change it to !== the opposite will happen
-                                                                                                 // anddd the tickets date completed is not an empty string
+                    return ticket.userId === responsibleUserObject.id && ticket.dateCompleted === ""   
             })
             setFiltered(openTicketArray)  // shows opened tickets 
             }
             else {
-                const myTickets = tickets.filter(ticket => ticket.userId === honeyUserObject.id) //back to all tickets 
+                const myTickets = tickets.filter(ticket => ticket.userId === responsibleUserObject.id) 
                 
                 setFiltered(myTickets) //brings it back 
 
@@ -150,46 +133,47 @@ export const TicketList = ({ searchTermState }) => {  // theres the searchTermSt
         return total
     }
 
-
-// parent container includes
-
-
-
-
     return <> 
-
-        <div className="bank"> 
-        Bank Total $ {bankTotal()}
+        <div className="bank">
+            Bank Total $ {bankTotal()}
         </div>
-        <fieldset className="top">
-    
+    <div>
 
-    <div className="eleven">
-    
-                <button onClick={() => navigate("/ticket/create")} className="pray_bitch">Add New Todo</button>
-                {/* <button onClick={() => updateOpenOnly(true)}>Open Ticket</button>
-                <button onClick={() => updateOpenOnly(false)}>All Todo List Items </button> */}
-                <button onClick={() => { setEmergency(true) }} className="pray_bitch"> Daily Only</button>
-                <button onClick={() => { setEmergency(false)}} className="pray_bitch"> Show All </button>
-        
-            </div>
-    
-        </fieldset>
-        
 
-        <legend className="title">Todo List</legend> 
-        <article className="tickets">
+        <fieldset className="please" >
+
+        <legend className="title">To Do List</legend>
+
+        <div className="buttons">
+
+<h1> </h1>
+    {
+        responsibleUserObject.staff 
+        ? <>
+        <button onClick={() => updateOpenOnly(true)} className="button">unfinished Todos</button>
+            <button onClick={() => updateOpenOnly(false)} className="button">All Todos</button>
+        </>
+        : <>
+            <button onClick={() => navigate("/shop/create")} className="button">Add new item to todo list</button>
+            <button onClick={ () => { setEmergency(true) }} className="button">Daily</button>
+            <button onClick={ () => { setEmergency(false) }} className="button">Show All</button>
+        </>
+    }
+</div>
+    
+        <article className="ticket_container">
+
             {
                 filteredTickets.map(
                     (ticket) => <Ticket employees={employees} 
                         getAllTickets={getAllTickets} //same prop name as function reference
-                        currentUser={honeyUserObject} 
-                        ticketObject={ticket}
-                        ticketObjects={ticket.rate} />
+                        currentUser={responsibleUserObject} 
+                        ticketObject={ticket} />
                 )
             }
         </article>
+        </fieldset>
+        </div>
 
-        
     </>
 }
