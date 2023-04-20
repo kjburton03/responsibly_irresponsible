@@ -9,9 +9,9 @@ A web application to-do list styled to reward users with their own personalized 
 [ERD](https://dbdiagram.io/d/636c1157c9abfc6111717e96)
 
 ## Technologies Used
-React
-Javascript
-JSX
-CSS
-HTML
-JSON server
+React |
+Javascript |
+JSX |
+CSS |
+HTML |
+JSON server 
