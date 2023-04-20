@@ -4,7 +4,7 @@ A web application to-do list styled to reward users with their own personalized 
 
 ## Plannning
 <!-- wireframe -->
-[WireFrame](https://sketchboard.me/xDzCDvVcZcc#/)
+[Wire Frame](https://sketchboard.me/xDzCDvVcZcc#/)
 
 [ERD](https://dbdiagram.io/d/636c1157c9abfc6111717e96)
 
