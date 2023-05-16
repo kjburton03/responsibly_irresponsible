@@ -52,7 +52,6 @@ export const CustomerForm = () => {
                 }
             }, [feedback])
     
-     //// ^ devtools -> network -> clear network -> user enters new state -> 1 request URL to employee.id -. status code 200 ok means it works 
     return (
         <>
         <form className="profile">
@@ -107,4 +106,3 @@ export const CustomerForm = () => {
       </>  
     )
 }
-//// need <></> to add multiple things in return div & form

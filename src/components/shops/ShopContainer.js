@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { ShopList } from "./ShopList"
-import { ShopSearch } from "./ShopSearch"    // combines these two with parent
+import { ShopSearch } from "./ShopSearch"
 
 export const ShopContainer = () => {
-    const [searchTerms, setSearchTerms] = useState("")   // keeping the state of search terms in here  // empty string
+    const [searchTerms, setSearchTerms] = useState("")
 
     return <>
         <ShopSearch setterFunction={setSearchTerms} keyColon={"value"} example={120} placenta={"yummy"}/> 
@@ -11,8 +11,3 @@ export const ShopContainer = () => {
             
     </>
 }
-
-
-/// passing values down to child components 
-
-//// setterFunction is name of key

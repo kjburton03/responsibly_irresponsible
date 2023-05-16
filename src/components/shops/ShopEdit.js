@@ -1,11 +1,3 @@
-// // Create a new module src/components/tickets/TicketEdit.js.
-
-// // The edit form is, largely, the same as the TicketForm component. It has some important differences.
-
-// // You need to GET the data based on the route parameter
-// // The request to save the data is a PUT instead of a POST
-// // The checked attribute of the checkbox must be bound to the ticket.emergency property
-// // You can give it your best shot to transpose the code from TicketForm to TicketEdit and change it where needed, or you can snag the starter code below.
 
 
 import { useEffect, useState } from "react"
@@ -17,7 +9,7 @@ export const ShopEdit = () => {
         rate: 0,
         img: "",
         shopWebsite: "",
-        emergency: false,
+        asap: false,
         
     })
     const { shopId } = useParams()
@@ -138,11 +130,11 @@ export const ShopEdit = () => {
             <div className="form-group">
                 <label htmlFor="name">Need it asap:</label>
                 <input type="checkbox"
-                    checked={shop.emergency}
+                    checked={shop.asap}
                     onChange={
                         (evt) => {
                             const copy = { ...shop }
-                            copy.emergency = evt.target.checked
+                            copy.asap = evt.target.checked
                             assignShop(copy)
                         }
                     } />
