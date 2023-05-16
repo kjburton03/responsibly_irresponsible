@@ -1,4 +1,4 @@
-export const TicketSearch = ({ setterFunction }) => {  // returns an input field 
+export const TodoSearch = ({ setterFunction }) => {  // returns an input field 
     return (
         <div>
         <input 

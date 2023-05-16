@@ -1,11 +1,5 @@
-// start of profiles for users
-
-
-
 import { CustomerForm } from "./CustomerForm"
-// import { CustomerViews } from "./CustomerViews"
 import { EmployeeForm } from "./EmployeeForm"
-// import { EmployeeViews } from "./EmployeeViews"
 
 
 

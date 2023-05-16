@@ -13,7 +13,7 @@ export const ShopList = ({ searchTermState }) => {
 
     const [employees, setEmployees] = useState([])
 
-    const [emergency, setEmergency] = useState(false)
+    const [asap, setAsap] = useState(false)
 
     const [openOnly, updateOpenOnly] = useState(false)
 
@@ -24,42 +24,38 @@ export const ShopList = ({ searchTermState }) => {
 
 
 
-    const localResponsibleUser = localStorage.getItem("responsible_user")
-       
-    const responsibleUserObject = JSON.parse(localResponsibleUser) 
-                    // devtools -> application -> storage -> localhost -> now shows the value of staff and id under it 
+    const localResponsibleUser = localStorage.getItem("responsibly_token")
 
-    useEffect(      // to observe state from parent  & filter down to what is typed into search tab
-        () => {                         //filter original tickets
+    const responsibleUserObject = JSON.parse(localResponsibleUser) 
+
+
+    useEffect(
+        () => {
             const searchedShops = shops.filter(shop => {
                 return shop.description.toLowerCase().startsWith(searchTermState.toLowerCase())
             
-            }) //for each ticket, lets return => ticket.description starts with the searchTermState we got from the parent, a
-            setFiltered(searchedShops) //updating filtered tickets
+            })
+            setFiltered(searchedShops)
         },
         [ searchTermState ]
     )
-    // devTools components -> ticketList -> props -> searchTermState: ""     <-shows in parentheses what you are currently typing
-    // if you console.log(searchTermState) in the use effect it will show everything typed into the search in the console log
     
     useEffect(
         () => {
-            if (emergency) { // only if its an emergency
-               const emergencyShops = shops.filter(shop => shop.emergency === true) //* uses original ticket & returns every ticket to an array
-               setFiltered(emergencyShops) //displaying filtered tickets so you need to update its state to emergencyTickets
-            }// array saved in emergencyTickets 
+            if (asap) {
+               const asapShops = shops.filter(shop => shop.asap === true) //* uses original ticket & returns every ticket to an array
+               setFiltered(asapShops)
+            }
             else {
-                setFiltered(shops) //filters back to all tickets when show all button is pressed. 
+                setFiltered(shops) 
             }
 
         },
-        [emergency] //observing emergent tickets
+        [asap] 
     )
-
-        // lets us get all tickets on initial state and invoked when the button is clicked for claimed tickets
         const getAllShops = () => {
-            fetch(`http://localhost:8088/serviceShops?_embed=employeeShops`) ///grabs every ticket made by customers . dont need a return statement before fetch    added the ?_embed=employeeTickets to show who is working on a ticket or if it has yet to be claimed
-            .then(response => response.json()) /// get the response, parse the response, turn it back into an array 
+            fetch(`http://localhost:8088/serviceShops?_embed=employeeShops`)
+            .then(response => response.json()) 
             .then((shopArray) => {
                 setShops(shopArray)
                 
@@ -71,16 +67,14 @@ export const ShopList = ({ searchTermState }) => {
     useEffect(
         () => {
             getAllShops()
-            fetch(`http://localhost:8088/serviceShops?_embed=employeeShops`) ///grabs every ticket made by customers . dont need a return statement before fetch    added the ?_embed=employeeTickets to show who is working on a ticket or if it has yet to be claimed
-                .then(response => response.json()) /// get the response, parse the response, turn it back into an array 
+            fetch(`http://localhost:8088/serviceShops?_embed=employeeShops`) 
+                .then(response => response.json())
                 .then((shopArray) => {
                     setShops(shopArray)
                     
-                }) /// ticketArray is a parameter to capture all the data processed from servicetickets database
-                    /// database.json //-> serviceTickets -> tickets -> //setTickets-useSTate-useEffect-fetch// ticketArray
-                    ///serviceTickets -> tickets -> ticketArray new value
-                    fetch(`http://localhost:8088/employees?_expand=user`) ///grabs every ticket made by customers . dont need a return statement before fetch    added the ?_embed=employeeTickets to show who is working on a ticket or if it has yet to be claimed
-                    .then(response => response.json()) /// get the response, parse the response, turn it back into an array 
+                })
+                    fetch(`http://localhost:8088/employees?_expand=user`)
+                    .then(response => response.json()) 
                     .then((employeeArray) => {
                         setEmployees(employeeArray)
                         
@@ -93,47 +87,38 @@ export const ShopList = ({ searchTermState }) => {
         useEffect(
             () => {
                 if(responsibleUserObject.staff) {
-                    // employees
                     setFiltered(shops)
-                    //shows all tickets through setFiltered state ... i think 
                 }
                 else {
-                    // customers
                     const myShops = shops.filter(shop => shop.userId === responsibleUserObject.id)
                     
-                    // filters throught all tickets then shows only the tickets that customerID's matches user's id
                     setFiltered(myShops)
-                    // uses the new myTickets array to see them updated.. last step in the return
                 }
             },
             [shops]
         )
-                     // the tickets do not change until useEffect [tickets] is applied. <--- state variables
-                     /////// useEffect is to observe state  
 
-    useEffect(  // show only completed tickets
-        () => {  //function -> if openOnly 
+    useEffect(
+        () => {
             if (openOnly) { 
                 const openShopArray =  shops.filter(shop => {
-                    return shop.userId === responsibleUserObject.id && shop.dateCompleted === ""   // if the tickets user id matches with the json id    if you change it to !== the opposite will happen
-                                                                                                 // anddd the tickets date completed is not an empty string
+                    return shop.userId === responsibleUserObject.id && shop.dateCompleted === ""
             })
-            setFiltered(openShopArray)  // shows opened tickets 
+            setFiltered(openShopArray)
             }
             else {
-                const myShops = shops.filter(shop => shop.userId === responsibleUserObject.id) //back to all tickets 
+                const myShops = shops.filter(shop => shop.userId === responsibleUserObject.id)
                 
-                setFiltered(myShops) //brings it back 
+                setFiltered(myShops)
 
 
             }
         },
-        [ openOnly ] //observing openOnly array 
-
+        [ openOnly ] 
     )
 
     const bankTotal = () => {
-        const completedShops = shops.filter(shop => shop.dateCompleted?.length > 1 ) //back to all tickets 
+        const completedShops = shops.filter(shop => shop.dateCompleted?.length > 1 ) 
         const total = completedShops.reduce((accumulator, currentValue) => {
             return accumulator + currentValue.rate;
         }, 0);
@@ -147,41 +132,26 @@ export const ShopList = ({ searchTermState }) => {
             Shopping Cart Total $ {bankTotal()}
         </div>
     <div>
-
-
-        <fieldset className="please" >
-
-        <legend className="title">Shopping List</legend>
+    <h1>Shopping List</h1>
 
         <div className="buttons">
-
-<h1> </h1>
-    {
-        responsibleUserObject.staff 
-        ? <>
-        <button onClick={() => updateOpenOnly(true)} className="button">unpurchased Items</button>
-            <button onClick={() => updateOpenOnly(false)} className="button">All Items</button>
-        </>
-        : <>
             <button onClick={() => navigate("/shop/create")} className="button">Add new item</button>
-            <button onClick={ () => { setEmergency(true) }} className="button">Need it now</button>
-            <button onClick={ () => { setEmergency(false) }} className="button">Show All</button>
-        </>
-    }
+            <button onClick={ () => { setAsap(true) }} className="button">Need it now</button>
+            <button onClick={ () => { setAsap(false) }} className="button">Show All</button>
+
 </div>
     
-        <article className="shops">
+        <article className="shop_container">
 
             {
                 filteredShops.map(
                     (shop) => <Shop employees={employees} 
-                        getAllShops={getAllShops} //same prop name as function reference
+                        getAllShops={getAllShops} 
                         currentUser={responsibleUserObject} 
                         shopObject={shop} />
                 )
             }
         </article>
-        </fieldset>
         </div>
 
     </>

@@ -1,28 +1,25 @@
-.ticket_container {
+
+.todo_container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* display: flex; */
-    /* flex-direction: column; */
     background-color: black;
     border-radius: 2%;
     border-color: #c6920eb7;
     border-width: .2rem;
     border-style:groove;
     width: 50rem;
-    height: 21.7rem;
-    /* margin-top: 7rem;
-    margin-left: 10rem; */
+    height: 25rem;
     margin: 0 auto;
-    /* margin-top: -200; */
     overflow:scroll;
     padding-bottom: 50;
     border: inset;
     opacity: 75%;
     color: green
-    
-
+}
+.penis {
+    border-color: fuchsia;
 }
 .title {
     font-size: 50px;
@@ -34,26 +31,40 @@
     z-index: 3;
 }
 
-/* .buttons {
+.buttons {
     display: flex;
     justify-content: center;
-    width: 60rem;
-    height: 21.7rem;
-    margin-top: 7rem;
-    margin-left: 10rem;
-    border-radius: 2%;
+    align-items: center;
+    margin-top: 20px;
+}
 
-    
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
-} */
+.button:hover {
+    background-color: goldenrod;
+}
 
-.ticket__header {
+.todo__header {
     font-size: large;
     padding: 0;
     background-color: crimson;
 }
 
-
+.link{
+    color: antiquewhite;
+}
 
 .bank {
     background-color: #fffef2;
@@ -61,7 +72,9 @@
     font-size: 16px;
     font-weight: bold;
     padding: 10px;
-    text-align: center;
+    text-align:right;
+    justify-content: flex-end;
+    flex: content;
     width: 100%;
     position: fixed;
     top: 60px;
@@ -69,12 +82,12 @@
     z-index: 9999;
   }
 
-.ticket {
+.todo {
     background-color: #202020;
     border: 2px inset #a5c3b2;
     padding: 2rem;
     /* margin: 0.9rem 3.6rem ; */
-    color: red;
+    color: whitesmoke;
     width: 500px;
     border-radius: 10px;
     font-size: large;
@@ -83,7 +96,7 @@
 
 }
 
-.ticket:visited {
+.todo:visited {
     color:pink;
     font-size: xx-large;
     text-decoration: dashed;
@@ -91,56 +104,28 @@
 
 
 
-.ticket__delete {
+.todo__delete {
     margin-left: auto;
     background-color: #252525;
     color: whitesmoke;
 }
 
-.ticket__finish {
+.todo__finish {
     margin-left: auto;
     background-color: #252525;
     color: whitesmoke;
 }
 
-.ticket__footer {
+.todo__footer {
     display: flex;
     padding: 1rem 0 0 0 ;
     border-top: 1px dashed #252525;
     margin: 1rem 0 0 0;
 }
-
-/* .shop__header {
-    font-size: large;
-    padding: 0;
-    background-color: crimson;
-} */
-
-/* .please {
-    background-color: #2d6a4f;
-    padding: 1 1 2rem 1;
-    margin: 2rem 1 1 1;
-    justify-content: center;
-    
-} */
-
- /* .button {
-    background-color: #151515;
-    padding: 1.3rem;
-    margin: 1rem;
-    flex-direction: row;
-    justify-content: middle;
-    color: #B7E4C7;
-    font-family: Georgia, 'Times New Roman', Times, serif, 'Times New Roman', Times, serif;
-    margin-left: 6rem;
-    border-radius: 2%;
-
-}  */
-
-.ticket_top{
+.todo_top{
     background-color: gray;
 }
 
-.ticket__form {
+.todo__form {
     background-color: black;
 }
