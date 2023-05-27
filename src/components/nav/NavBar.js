@@ -18,16 +18,16 @@ export const NavBar = () => {
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/shops">Shop</Link>
             </li>
-            {
+            {/* {
                 localStorage.getItem("responsible_token")
-                    ? <li className="navbar__item navbar__logout">
+                    ? <li className="navbar__item navbar__logout"> */}
                         <Link className="navbar__link" to="" onClick={() => {
                             localStorage.removeItem("responsible_token")
                             navigate("/", {replace: true})
                         }}>Logout</Link>
-                    </li>
+                    {/* </li>
                     : ""
-            }
+            } */}
         </ul>
     )
 }
