@@ -18,7 +18,7 @@ export const Todo = ({todoObject, currentUser, clients, getAllTodos}) => {
     const deleteButton = () => {
         if (!currentUser.staff) {
             return <button onClick={() => {
-                fetch(`http://localhost:8088/theTodos/${todoObject.id}`, {
+                fetch(`http://localhost:8088/todos/${todoObject.id}`, {
                     method: "DELETE"
                 })
 
@@ -44,7 +44,7 @@ export const Todo = ({todoObject, currentUser, clients, getAllTodos}) => {
 
         }
 
-        return fetch(`http://localhost:8088/theTodos/${todoObject.id}`, {
+        return fetch(`http://localhost:8088/Todos/${todoObject.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

@@ -24,10 +24,9 @@ const changeTodoState = (todo) => {
                 <div className="form-group"> 
                     <label htmlFor="title">Description:</label>
                     <input
-                        required autoFocus
                         type="text"
+                        name="title" required autoFocus
                         className="form-control"
-                        placeholder="Brief description todo list item"
                         value={currentTodo.title}
                         onChange={changeTodoState}/>
                 </div>
@@ -36,6 +35,7 @@ const changeTodoState = (todo) => {
                 <div className="form-group">
                     <label htmlFor="name">Cost:</label>
                     <input type="number"
+                        name="price"
                         className="form-control"
                         value={currentTodo.price}
                         onChange={changeTodoState} />
