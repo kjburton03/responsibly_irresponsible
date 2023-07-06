@@ -32,7 +32,7 @@ export const ShopList = (props) => {
         
         const updatedShops = data.map((shop) => ({
             ...shop,
-            addedByCurrentUser: shop.user.id === parseInt(userId),
+            addedByCurrentUser: shop.user?.id === parseInt(userId),
         }));
         setShops(updatedShops)
         });

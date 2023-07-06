@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Todo } from "./Todo"
-import { deleteTodo, getTodos } from "../../managers/TodoManager"
+import { deleteTodo, getTodos, createTodo, updateTodo } from "../../managers/TodoManager"
 import "./Todos.css"
 
 
@@ -32,7 +32,7 @@ export const TodoList = (props) => {
         
         const updatedTodos = data.map((todo) => ({
             ...todo,
-            addedByCurrentUser: todo.user.id === parseInt(userId),
+            addedByCurrentUser: todo.user?.id === parseInt(userId),
         }));
         setTodos(updatedTodos)
         });
@@ -145,7 +145,17 @@ export const TodoList = (props) => {
 
     
         <article className="todo_container">
-
+                {
+        filteredTodos.map((todo) => (
+            <Todo
+            key={todo.id} // Use the 'id' property as the key
+            getTodos={getTodos}
+            currentUser={userId}
+            todoObject={todo}
+            />
+        ))
+        }
+{/* 
             {
                 filteredTodos.map(
                     (todo) => <Todo 
@@ -153,10 +163,75 @@ export const TodoList = (props) => {
                         currentUser={userId} 
                         todoObject={todo} />
                 )
-            }
+            } */}
         </article>
         {/* </fieldset> */}
         </div>
 
     </>
 }
+
+// import React, { useEffect, useState } from "react"
+// import { useNavigate } from "react-router-dom"
+// import "./Todo.css"
+// import { deleteTodo, getTodos } from "../../managers/TodoManager"
+// // import "./event.css"
+
+// export const TodoList = (props) => {
+//     const [ todos, setTodos ] = useState([])
+//     const navigate = useNavigate()
+//     const userId = parseInt(localStorage.getItem("responsibly_token"));
+
+//     useEffect(() => {
+//         getTodos().then(data => setTodos(data))
+//     }, [])
+
+//     useEffect(() => {
+//         getTodos().then((data) => { 
+//           // Update addedByCurrentUser property for each book
+
+//         const updatedTodos = data.map((todo) => ({
+//             ...todo,
+//             addedByCurrentUser: todo.client?.id === parseInt(userId),
+//         }));
+
+//         setTodos(updatedTodos);
+//         });
+//     }, [userId]);
+    
+//     const deleteButton = (id) => {
+//             deleteTodo(id)
+//             .then(() => {
+//                     getTodos().then(data => setTodos(data))
+            
+//         })
+//     }
+
+//     return <> 
+//         <div className="bank">
+//             Bank Total $ {bankTotal()}
+//         </div>
+//     <div>
+//         <div className="buttons">
+//             <button onClick={() => navigate("/todo/create")} className="button">Add new</button>
+//             <button onClick={ () => { setDaily(true) }} className="button">Daily</button>
+//             <button onClick={ () => { setDaily(false) }} className="button">Show All</button>
+//         </div>
+    
+
+    
+//         <article className="todo_container">
+
+//             {
+//                 filteredTodos.map(
+//                     (todo) => <Todo 
+//                         getTodos={getTodos} 
+//                         currentUser={userId} 
+//                         todoObject={todo} />
+//                 )
+//             }
+//         </article>
+//         </div>
+
+//     </>
+// }
