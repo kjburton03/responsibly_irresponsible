@@ -27,6 +27,7 @@ const changeTodoState = (todo) => {
                         type="text"
                         name="title" required autoFocus
                         className="form-control"
+                        placeholder="Brief description todo list item"
                         value={currentTodo.title}
                         onChange={changeTodoState}/>
                 </div>

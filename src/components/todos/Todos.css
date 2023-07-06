@@ -82,7 +82,7 @@
     z-index: 9999;
   }
 
-.todo {
+  .todo {
     background-color: #202020;
     border: 2px inset #a5c3b2;
     padding: 2rem;
