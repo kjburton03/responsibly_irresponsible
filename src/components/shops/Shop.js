@@ -1,68 +1,126 @@
-// import { Link } from "react-router-dom"
-// import { deleteTodo, getTodos } from "../../managers/TodoManager"
-import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-// import { deleteTodo, getTodos } from "../../managers/TodoManager"
-import { getShops, deleteShop } from "../../managers/ShopManager"
-import "./Shops.css"
-
-
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getShops, deleteShop } from "../../managers/ShopManager";
+import "./Shops.css";
 
 export const Shop = (props) => {
-    const [ refresh, setRefresh ] = useState(true)
-    const [ shops, setShops ] = useState([
-        {id: 0,
-        title: "",
-        price: 0,
-        asap: false,
-        client: {}
-        }
-    ])
-    const navigate = useNavigate()
+  const [shops, setShops] = useState([]);
 
-    function refreshPage() {
-        window.location.reload(false)
-    }
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        getShops().then(data => setShops(data))
-    }, [,refresh])
+  const handleClick = (id) => {
+    deleteShop(id).then(() => {
+      // After deleting the shop, update the shops state by filtering out the deleted shop
+      setShops((prevShops) => prevShops.filter((shop) => shop.id !== id));
+    });
+  };
 
-    const handleClick = (id) => {
-        deleteShop(id).then(refreshPage)
-    }
+  useEffect(() => {
+    getShops().then((data) => setShops(data));
+  }, []); // Empty dependency array ensures the useEffect runs only once on mount
 
-    return (
-        <article className="shop">
-            {/* <button className="btn btn-2 icon-create"
-                onClick={() => {
-                    navigate({ pathname: "new" })
-                }}
-            >Register New Todo Item</button> */}
-            {
-                shops.map(shop => {
-                    return <section key={`shop--${shop.id}`} className="shop">
-                        <div className="shop__title">{shop.title}</div>
-                        <div className="shop__price">Price: $ {shop.price} </div>
-                        <div className="shop__asap">Daily: {shop.asap ?  "✔️": "✖️"}</div>
-                        <div className="todo__footer">
-                            <button
-                                onClick={() => {
-                                    navigate({ pathname: `edit/${shop.id}`})
-                                }}>Edit</button>
-                        </div>
-                        <div className="game__footer">
-                            <button
-                                onClick={() => {
-                                    handleClick(shop.id)
-                                }}>Delete</button>
-                        </div>
-                    </section>
-                })
-            }
-        </article>
-    )
-}
+  return (
+    <article className="shop">
+      {/* Render shop data */}
+      {shops.map((shop) => (
+        <section key={`shop--${shop.id}`} className="shop">
+          <div className="shop__title">{shop.title}</div>
+          <div className="shop__price">Price: $ {shop.price} </div>
+          <div className="shop__asap">Daily: {shop.asap ? "✔️" : "✖️"}</div>
+          <div className="todo__footer">
+            <button
+              onClick={() => {
+                navigate({ pathname: `edit/${shop.id}` });
+              }}
+            >
+              Edit
+            </button>
+          </div>
+          <div className="game__footer">
+            <button onClick={() => handleClick(shop.id)}>Delete</button>
+          </div>
+        </section>
+      ))}
+    </article>
+  );
+};
+
+
+
+
+// // import { Link } from "react-router-dom"
+// // import { deleteTodo, getTodos } from "../../managers/TodoManager"
+// import { useEffect, useState } from "react"
+// import { Link, useNavigate } from "react-router-dom"
+// // import { deleteTodo, getTodos } from "../../managers/TodoManager"
+// import { getShops, deleteShop } from "../../managers/ShopManager"
+// import "./Shops.css"
+
+
+
+// export const Shop = (props) => {
+//     const [ refresh, setRefresh ] = useState(true)
+//     const [ shops, setShops ] = useState([
+//         {id: 0,
+//         title: "",
+//         price: 0,
+//         asap: false,
+//         client: {}
+//         }
+//     ])
+//     const navigate = useNavigate()
+
+//     function refreshPage() {
+//         window.location.reload(false)
+//     }
+
+//     // useEffect(() => {
+//     //     getShops().then(data => setShops(data))
+//     // }, [,refresh])
+
+//     useEffect(() => {
+//         getShops().then(data => setShops(data));
+//     }, [refresh]);
+
+//     const handleClick = (id) => {
+//         deleteShop(id).then(refreshPage)
+//     }
+
+//     return (
+//         <article className="shop">
+//             {/* <button className="btn btn-2 icon-create"
+//                 onClick={() => {
+//                     navigate({ pathname: "new" })
+//                 }}
+//             >Register New Todo Item</button> */}
+//             {
+//                 shops.map(shop => {
+//                     return <section key={`shop--${shop.id}`} className="shop">
+//                         <div className="shop__title">{shop.title}</div>
+//                         <div className="shop__price">Price: $ {shop.price} </div>
+//                         <div className="shop__asap">Daily: {shop.asap ?  "✔️": "✖️"}</div>
+//                         <div className="todo__footer">
+//                             <button
+//                                 onClick={() => {
+//                                     navigate({ pathname: `edit/${shop.id}`})
+//                                 }}>Edit</button>
+//                         </div>
+//                         <div className="game__footer">
+//                             <button
+//                                 onClick={() => {
+//                                     handleClick(shop.id)
+//                                 }}>Delete</button>
+//                         </div>
+//                     </section>
+//                 })
+//             }
+//         </article>
+//     )
+// }
+
+
+
+
     // let assignedClient = null
     // const userClient = clients.find(client => client.userId === currentUser.id)
 
