@@ -55,25 +55,11 @@ export const TodoEdit = () => {
         <fieldset>
             <div className="form-group">
                 <label htmlFor="title">Description:</label>
-                {/* <textarea
-                    required autoFocus
-                    type="text"
-                    style={{
-                        height: "10rem"
-                    }}
-                    className="form-control"
-                    value={todo.description}
-                    onChange={
-                        (evt) => {
-                            const copy = { ...todo }
-                            copy.description = evt.target.value
-                            assignTodo(copy)
-                        }
-                    }>{todo.description}</textarea>
-            </div> */}
+
                 <input type="text" name="title" required autoFocus className="form-control"
-                    value={currentTodo.title}
-                    onChange={changeTodoState}
+                placeholder="Brief description todo list item"
+                value={currentTodo.title}
+                onChange={changeTodoState}
                     />
                 </div>
         </fieldset>

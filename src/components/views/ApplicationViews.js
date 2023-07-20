@@ -28,7 +28,7 @@ export const ApplicationViews = () => {
         <Route path="/todos/edit/:todoId" element={<TodoEdit />} />
 
         <Route path="/shops" element={<ShopList />} />
-        <Route path="/shops/create" element={<ShopForm />} />
+        <Route path="/shop/create" element={<ShopForm />} />
         <Route path="/shops/edit/:shopId" element={<ShopEdit />} />
 
         <Route path="/home" element={<Home />} />
