@@ -24,11 +24,11 @@ export const ApplicationViews = () => {
       </Authorized>}>
 
         <Route path="/todos" element={<TodoList />} />
-        <Route path="/todo/create" element={<TodoForm />} />
+        <Route path="/todoform" element={<TodoForm />} />
         <Route path="/todos/edit/:todoId" element={<TodoEdit />} />
 
         <Route path="/shops" element={<ShopList />} />
-        <Route path="/shop/create" element={<ShopForm />} />
+        <Route path="/shopform" element={<ShopForm />} />
         <Route path="/shops/edit/:shopId" element={<ShopEdit />} />
 
         <Route path="/home" element={<Home />} />
