@@ -56,7 +56,7 @@ export const TodoList = (props) => {
                         
                             <><button className="btn btn-2 btn-sep icon-create"
                                     onClick={() => {
-                                        navigate({ pathname: `edittodo/${todo.id}` })
+                                        navigate({ pathname: `/edittodo/${todo.id}` })
                                     } }>Edit</button><button className="btn btn-2 btn-sep icon-create"
                                         onClick={() => { deleteButton(todo.id) } }>Delete</button></>      
 
@@ -210,6 +210,7 @@ export const TodoList = (props) => {
 //     }
 
 //     return <> 
+// !! !!!!!
 //         <div className="bank">
 //             Bank Total $ {bankTotal()}
 //         </div>
