@@ -7,13 +7,16 @@ export const ShopEdit = () => {
     const navigate = useNavigate()
     const { shopId } = useParams()
 
-
-
-    const [currentShop, setCurrentShop] = useState({
-        title: "",
-        price: 0,
-        asap: false
-    })
+        const [currentShop, setCurrentShop] = useState({
+            title: "",
+            price: 0,
+            asap: false
+        })
+    useEffect(() => {
+        getShopById(shopId).then((data) => {
+            setCurrentShop(data)
+        })
+    }, [shopId])
 
     // useEffect(() => {
     //     getTodoById(todoId).then((res) => {
@@ -57,7 +60,9 @@ export const ShopEdit = () => {
             <div className="form-group">
                 <label htmlFor="title">Description:</label>
 
-                <input type="text" name="title" required autoFocus className="form-control"
+                <input 
+                type="text" 
+                name="title" required autoFocus className="form-control"
                 placeholder="Name of shopping item"
                 value={currentShop.title}
                 onChange={changeShopState}

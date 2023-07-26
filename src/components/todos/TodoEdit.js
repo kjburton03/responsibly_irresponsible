@@ -4,16 +4,20 @@ import { getTodoById, updateTodo } from "../../managers/TodoManager"
 
 export const TodoEdit = () => {
     const navigate = useNavigate()
+    // const { todoId } = useParams()
+
     const { todoId } = useParams()
-
-
-
-    const [currentTodo, setCurrentTodo] = useState({
-        title: "",
-        price: 0,
-        daily: false
-    })
-
+        
+        const [currentTodo, setCurrentTodo] = useState({
+            title: "",
+            price: 0,
+            daily: false
+        })
+    useEffect(() => {
+        getTodoById(todoId).then((data) => {
+            setCurrentTodo(data)
+        })
+    }, [todoId])
     // useEffect(() => {
     //     getTodoById(todoId).then((res) => {
     //         res.tod

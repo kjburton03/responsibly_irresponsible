@@ -56,7 +56,7 @@ export const ShopList = (props) => {
                         
                             <><button className="btn btn-2 btn-sep icon-create"
                                     onClick={() => {
-                                        navigate({ pathname: `editshop/${shop.id}` })
+                                        navigate({ pathname: `editShop/${shop.id}` })
                                     } }>Edit</button><button className="btn btn-2 btn-sep icon-create"
                                         onClick={() => { deleteButton(shop.id) } }>Delete</button></>      
 
