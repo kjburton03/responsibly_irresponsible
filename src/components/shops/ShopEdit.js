@@ -5,6 +5,11 @@ import { getShopById, updateShop } from "../../managers/ShopManager"
 
 export const ShopEdit = () => {
     const navigate = useNavigate()
+    // const [shops, setShops] = useState([
+    //     {
+    //         id: 0
+    //     }
+    // ])
     const { shopId } = useParams()
 
         const [currentShop, setCurrentShop] = useState({
