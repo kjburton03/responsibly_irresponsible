@@ -7,14 +7,25 @@ export const getShops = () => {
         .then(response => response.json())
 }
 
+// export const getShopById = (id) => {
+//     return fetch(`http://localhost:8000/shops/${id}`, {
+//         headers:{
+//             "Authorization": `Token ${localStorage.getItem("responsible_token")}`,
+//             "Content-Type": "application/json"
+//         }
+//     })
+//         .then(response => response.json())
+// };
+
 export const getShopById = (id) => {
     return fetch(`http://localhost:8000/shops/${id}`, {
-        headers:{
-            "Authorization": `Token ${localStorage.getItem("responsible_token")}`
-        }
+    headers: {
+        "Authorization": `Token ${localStorage.getItem("responsibly_token")}`,
+        "Content-Type": "application/json"
+    }
     })
-        .then(response => response.json())
-}
+    .then(response => response.json());
+};
 
 export const createShop = (shop) => {
     return fetch("http://localhost:8000/shops", {
@@ -29,7 +40,18 @@ export const createShop = (shop) => {
 
     }
 
-export const updateShop = (shop, id) => {
+// export const editShop = (shop, id) => {
+//     return fetch(`http://localhost:8000/shops/${id}`, {
+//         method: "PUT",
+//         headers: {
+//             "Authorization": `Token ${localStorage.getItem("responsibly_token")}`,
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(shop)
+//     })
+// }
+
+export const editShop = (shop, id) => {
     return fetch(`http://localhost:8000/shops/${id}`, {
         method: "PUT",
         headers: {
@@ -39,6 +61,7 @@ export const updateShop = (shop, id) => {
         body: JSON.stringify(shop)
     })
 }
+
 
 export const deleteShop = (id) => {
     return fetch(`http://localhost:8000/shops/${id}`,

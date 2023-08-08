@@ -1,81 +1,184 @@
-import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { getShopById, updateShop } from "../../managers/ShopManager"
+import { useState, useEffect } from "react"
+import { useNavigate, useParams } from 'react-router-dom'
+// import { getEventById, getEventTypes, updateEvent } from "../../managers/EventManager.js"
+import { editShop, getShopById } from "../../managers/ShopManager"
 
-
-export const ShopEdit = () => {
+export const EditShop = () => {
     const navigate = useNavigate()
+    const [shops, setShops] = useState([
+        {
+        id: 0
+        } 
+    ])
 
     const { shopId } = useParams()
-
+    /*
+        Since the input fields are bound to the values of
+        the properties of this state variable, you need to
+        provide some default values.
+    */
         const [currentShop, setCurrentShop] = useState({
             title: "",
             price: 0,
             asap: false
         })
+
     useEffect(() => {
+        // TODO: Get the game types, then set the state
         getShopById(shopId).then((data) => {
             setCurrentShop(data)
         })
+
     }, [shopId])
 
-    const changeShopState = (shop) => {
+    const changeShopState = (domShop) => {
+        // TODO: Complete the onChange function
         const copy = { ...currentShop }
-        copy[shop.target.title] = shop.target.value
+        copy[domShop.target.name] = domShop.target.value
         setCurrentShop(copy)
     }
 
-    return ( 
-    <form className="shopForm">
-        <h2 className="shopForm__title">Shop</h2>
-        <fieldset>
-            <div className="form-group">
-                <label htmlFor="title">Description:</label>
-
-                <input 
-                type="text" 
-                name="title" required autoFocus className="form-control"
-                placeholder="Name of shopping item"
-                value={currentShop.title}
-                onChange={changeShopState}
+    return (
+        <form className="shopForm">
+            <h2 className="shopForm__title">Update Shop Item</h2>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="title">Item: </label>
+                    <input type="text" name="title" required autoFocus className="form-control"
+                        value={currentShop.title}
+                        onChange={changeShopState}
                     />
-                </div>
-        </fieldset>
-        <fieldset> 
-                <div className="form-group">
-                    <label htmlFor="name">Cost:</label>
-                    <input type="number"
-                        className="form-control"
+                    <label htmlFor="price">Price: </label>
+                    <input type="number" name="price" required autoFocus className="form-control"
                         value={currentShop.price}
-                        onChange={changeShopState}/>
-                </div>
-        </fieldset>
-        <fieldset>
-                <label htmlFor="name">Asap:</label>
-                <div className="form-group">
-                    <label htmlFor="name">Asap:</label>
-                    <input type="checkbox"
+                        onChange={changeShopState}
+                    />
+                    <label htmlFor="asap">Asap: </label>
+                    <input type="checkbox" name="asap" required autoFocus className="form-control"
                         value={currentShop.asap}
-                        onChange={changeShopState} />
-                </div>
-        </fieldset>
-        <button type="submit"
-            onClick={evt => {
-                evt.preventDefault()
+                        onChange={changeShopState}
+                    />
 
-                const shop = {
-                    title: currentShop.title,
-                    price: currentShop.price,
-                    asap: currentShop.asap
-                }
-                
-                updateShop(shop)
-                    .then(() => navigate("/shops"))
-            }}
-            className="btn btn-primary">Create</button>
-    </form>
+
+                    {/* <label className="label">Event Type: </label>
+                    <select
+                        name="eventType"
+                        className="form-control"
+                        value={currentEvent.eventType}
+                        onChange={(event) => {
+                            const copy = { ...currentEvent }
+                            copy.eventType = parseInt(event.target.value)
+                            setCurrentEvent(copy)
+                        }} >
+                        <option value="">Choose:</option>
+                        {eventTypes.map(events => ( 
+                                    <option key={`event--${events.id}`} value={events.id} name={events.eventType}>{events.eventType}</option>                         
+                            ))}
+                    </select> */}
+                </div>
+            </fieldset>
+
+            <button type="submit"
+                onClick={evt => {
+                    // Prevent form from being submitted
+                    evt.preventDefault()
+
+                    const shop = {
+                        // organizing_volunteer: currentEvent.organizing_volunteer,
+                        title: (currentShop.title),
+                        price: (currentShop.price),
+                        asap: (currentShop.asap)
+                    }
+
+                    // Send POST request to your API
+                    editShop(shop, shopId)
+                        .then(() => navigate("/shops"))
+                }}
+                className="btn btn-primary">Update</button>
+        </form>
     )
 }
+
+
+
+// import { useEffect, useState } from "react"
+// import { useNavigate, useParams } from "react-router-dom"
+// import { updateShop, getShopById } from "../../managers/ShopManager"
+
+
+// export const Edit = () => {
+//     const navigate = useNavigate()
+
+//     const { shopId } = useParams()
+
+//         const [currentShop, setCurrentShop] = useState({
+//             title: "",
+//             price: 0,
+//             asap: false
+//         })
+//     useEffect(() => {
+//         getShopById(shopId).then((data) => {
+//             setCurrentShop(data)
+//         })
+//     }, [shopId])
+
+//     const changeShopState = (shop) => {
+//         const copy = { ...currentShop }
+//         copy[shop.target.title] = shop.target.value
+//         setCurrentShop(copy)
+//     }
+
+//     return ( 
+//     <form className="shopForm">
+//         <h2 className="shopForm__title">Shop</h2>
+//         <fieldset>
+//             <div className="form-group">
+//                 <label htmlFor="title">Description:</label>
+
+//                 <input 
+//                 type="text" 
+//                 name="title" required autoFocus className="form-control"
+//                 placeholder="Name of shopping item"
+//                 value={currentShop.title}
+//                 onChange={changeShopState}
+//                     />
+//                 </div>
+//         </fieldset>
+//         <fieldset> 
+//                 <div className="form-group">
+//                     <label htmlFor="name">Cost:</label>
+//                     <input type="number"
+//                         className="form-control"
+//                         value={currentShop.price}
+//                         onChange={changeShopState}/>
+//                 </div>
+//         </fieldset>
+//         <fieldset>
+//                 <label htmlFor="name">Asap:</label>
+//                 <div className="form-group">
+//                     <label htmlFor="name">Asap:</label>
+//                     <input type="checkbox"
+//                         value={currentShop.asap}
+//                         onChange={changeShopState} />
+//                 </div>
+//         </fieldset>
+//         <button type="submit"
+//             onClick={evt => {
+//                 evt.preventDefault()
+
+//                 const shop = {
+//                     title: currentShop.title,
+//                     price: currentShop.price,
+//                     asap: currentShop.asap
+//                 }
+                
+//                 updateShop(shop)
+//                     .then(() => navigate("/shops"))
+//             }}
+//             className="btn btn-primary">Create</button>
+//     </form>
+//     )
+// }
 
 
 
