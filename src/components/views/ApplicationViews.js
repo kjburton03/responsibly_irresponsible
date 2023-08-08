@@ -3,7 +3,7 @@ import { Register } from "../auth/Register";
 import { Login } from "../auth/Login";
 import { TodoList } from "../todos/TodoList";
 import { TodoForm } from "../todos/TodoForm";
-import { TodoEdit } from "../todos/TodoEdit";
+import { EditTodo } from "../todos/TodoEdit";
 import { ShopList } from "../shops/ShopList";
 import { ShopForm } from "../shops/ShopForm";
 import { ShopEdit } from "../shops/ShopEdit";
@@ -25,7 +25,7 @@ export const ApplicationViews = () => {
 
         <Route path="/todos" element={<TodoList />} />
         <Route path="/todoform" element={<TodoForm />} />
-        <Route path="/todos/editTodo/:todoId" element={<TodoEdit />} />
+        <Route path="/todos/editTodo/:todoId" element={<EditTodo />} />
 
         <Route path="/shops" element={<ShopList />} />
         <Route path="/shopform" element={<ShopForm />} />

@@ -7,14 +7,25 @@ export const getTodos = () => {
         .then(response => response.json())
 }
 
+// export const getTodoById = (id) => {
+//     return fetch(`http://localhost:8000/todos/${id}`, {
+//         headers:{
+//             "Authorization": `Token ${localStorage.getItem("responsible_token")}`
+//         }
+//     })
+//         .then(response => response.json())
+// }
+
 export const getTodoById = (id) => {
     return fetch(`http://localhost:8000/todos/${id}`, {
-        headers:{
-            "Authorization": `Token ${localStorage.getItem("responsible_token")}`
-        }
+    headers: {
+        "Authorization": `Token ${localStorage.getItem("responsibly_token")}`,
+        "Content-Type": "application/json"
+    }
     })
-        .then(response => response.json())
-}
+    .then(response => response.json());
+};
+
 
 export const createTodo = (todo) => {
     return fetch("http://localhost:8000/todos", {
@@ -27,9 +38,12 @@ export const createTodo = (todo) => {
     })
     .then(response => response.json())
 
-    }
 
-export const updateTodo = (todo, id) => {
+    }
+    
+    console.log(localStorage.getItem("responsible_token"));
+
+export const editTodo = (todo, id) => {
     return fetch(`http://localhost:8000/todos/${id}`, {
         method: "PUT",
         headers: {
