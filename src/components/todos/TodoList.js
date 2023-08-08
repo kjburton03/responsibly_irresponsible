@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-// import { Todo } from "./Todo"
-// import { deleteTodo, getTodos, createTodo, updateTodo } from "../../managers/TodoManager"
-// import "./Shops.css"
 import { Todo } from "./Todo"
 import { deleteTodo, getTodos, createTodo, updateTodo } from "../../managers/TodoManager"
 
@@ -19,16 +16,27 @@ export const TodoList = (props) => {
     
     useEffect(() => {
         getTodos().then((data) => {
-        
-        const updatedTodos = data.map((todo) => ({
+    
+        console.log(data); 
+          // Check if data array is as expected
+    
+        const updatedTodos = data.map((todo) => {
+            console.log(todo.client); 
+            // Check if todo.client is defined and has expected properties
+
+            return {
             ...todo,
             addedByCurrentUser: todo.client?.id === parseInt(userId),
-        }));
+            }
+        });
 
+        console.log(updatedTodos); 
+          // Check if updatedTodos array is as expected
+    
         setTodos(updatedTodos);
         });
     }, [userId]);
-
+    
     const deleteButton = (id) => {
             deleteTodo(id)
             .then(() => {
@@ -50,8 +58,8 @@ export const TodoList = (props) => {
                     return <section key={`todo--${todo.id}`} className="todo">
                         <div className="todo__title">{todo.title}</div>
                         <div className="todo__price"> Price: {todo.price} </div>
-                        <div className="todo__daily">Details:  {todo.daily}</div>
-                        {/* <div className="event__organizer"> Organized by {event.organizer}</div> */}
+                        <div className="todo__daily">Daily: {todo.daily ?  "✔️": "✖️"}</div>
+
                         <div className="todo__footer">
                         
                             <><button className="btn btn-2 btn-sep icon-create"

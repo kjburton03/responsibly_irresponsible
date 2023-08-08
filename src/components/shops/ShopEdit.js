@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getShopById, updateShop } from "../../managers/ShopManager"
-// import { getTodoById, updateTodo } from "../../managers/TodoManager"
+
 
 export const ShopEdit = () => {
     const navigate = useNavigate()
-    // const [shops, setShops] = useState([
-    //     {
-    //         id: 0
-    //     }
-    // ])
+
     const { shopId } = useParams()
 
         const [currentShop, setCurrentShop] = useState({
@@ -22,35 +18,6 @@ export const ShopEdit = () => {
             setCurrentShop(data)
         })
     }, [shopId])
-
-    // useEffect(() => {
-    //     getTodoById(todoId).then((res) => {
-    //         res.tod
-    //     })
-    // })
-    // useEffect(() => {
-    //     fetch(`http://localhost:8088/theTodos/${todoId}`)
-    //         .then(response => response.json())
-    //         .then((data) => {
-    //             assignTodo(data)
-    //         })
-    // }, [todoId])
-
-    // const handleSaveButtonClick = (event) => {
-    //     event.preventDefault()
-
-    //     return fetch(`http://localhost:8088/theTodos/${todo.id}`, {
-    //         method: "PUT",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(todo)
-    //     })
-    //         .then(response => response.json())
-    //         .then(() => {
-    //             navigate("/todos")
-    //         })
-    // }
 
     const changeShopState = (shop) => {
         const copy = { ...currentShop }
@@ -109,6 +76,133 @@ export const ShopEdit = () => {
     </form>
     )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { useEffect, useState } from "react"
+// import { useNavigate, useParams } from "react-router-dom"
+// import { getShopById, updateShop } from "../../managers/ShopManager"
+
+
+// export const ShopEdit = () => {
+//     const navigate = useNavigate()
+//     // const [shops, setShops] = useState([
+//     //     {
+//     //         id: 0
+//     //     }
+//     // ])
+//     const { shopId } = useParams()
+
+//         const [currentShop, setCurrentShop] = useState({
+//             title: "",
+//             price: 0,
+//             asap: false
+//         })
+//     useEffect(() => {
+//         getShopById(shopId).then((data) => {
+//             setCurrentShop(data)
+//         })
+//     }, [shopId])
+
+//     // useEffect(() => {
+//     //     getTodoById(todoId).then((res) => {
+//     //         res.tod
+//     //     })
+//     // })
+//     // useEffect(() => {
+//     //     fetch(`http://localhost:8088/theTodos/${todoId}`)
+//     //         .then(response => response.json())
+//     //         .then((data) => {
+//     //             assignTodo(data)
+//     //         })
+//     // }, [todoId])
+
+//     // const handleSaveButtonClick = (event) => {
+//     //     event.preventDefault()
+
+//     //     return fetch(`http://localhost:8088/theTodos/${todo.id}`, {
+//     //         method: "PUT",
+//     //         headers: {
+//     //             "Content-Type": "application/json"
+//     //         },
+//     //         body: JSON.stringify(todo)
+//     //     })
+//     //         .then(response => response.json())
+//     //         .then(() => {
+//     //             navigate("/todos")
+//     //         })
+//     // }
+
+//     const changeShopState = (shop) => {
+//         const copy = { ...currentShop }
+//         copy[shop.target.title] = shop.target.value
+//         setCurrentShop(copy)
+//     }
+
+//     return ( 
+//     <form className="shopForm">
+//         <h2 className="shopForm__title">Shop</h2>
+//         <fieldset>
+//             <div className="form-group">
+//                 <label htmlFor="title">Description:</label>
+
+//                 <input 
+//                 type="text" 
+//                 name="title" required autoFocus className="form-control"
+//                 placeholder="Name of shopping item"
+//                 value={currentShop.title}
+//                 onChange={changeShopState}
+//                     />
+//                 </div>
+//         </fieldset>
+//         <fieldset> 
+//                 <div className="form-group">
+//                     <label htmlFor="name">Cost:</label>
+//                     <input type="number"
+//                         className="form-control"
+//                         value={currentShop.price}
+//                         onChange={changeShopState}/>
+//                 </div>
+//         </fieldset>
+//         <fieldset>
+//                 <label htmlFor="name">Asap:</label>
+//                 <div className="form-group">
+//                     <label htmlFor="name">Asap:</label>
+//                     <input type="checkbox"
+//                         value={currentShop.asap}
+//                         onChange={changeShopState} />
+//                 </div>
+//         </fieldset>
+//         <button type="submit"
+//             onClick={evt => {
+//                 evt.preventDefault()
+
+//                 const shop = {
+//                     title: currentShop.title,
+//                     price: currentShop.price,
+//                     asap: currentShop.asap
+//                 }
+                
+//                 updateShop(shop)
+//                     .then(() => navigate("/shops"))
+//             }}
+//             className="btn btn-primary">Create</button>
+//     </form>
+//     )
+// }
 
 
 // import { useState, useEffect } from "react"

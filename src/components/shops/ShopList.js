@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-// import { Todo } from "./Todo"
-// import { deleteTodo, getTodos, createTodo, updateTodo } from "../../managers/TodoManager"
 import "./Shops.css"
 import { Shop } from "./Shop"
 import { deleteShop, getShops, createShop, updateShop } from "../../managers/ShopManager"
@@ -50,8 +48,8 @@ export const ShopList = (props) => {
                     return <section key={`shop--${shop.id}`} className="shop">
                         <div className="shop__title">{shop.title}</div>
                         <div className="shop__price"> Price: {shop.price} </div>
-                        <div className="shop__asap">Details:  {shop.asap}</div>
-                        {/* <div className="event__organizer"> Organized by {event.organizer}</div> */}
+                        <div className="shop__asap">Daily: {shop.asap ? "✔️" : "✖️"}</div>
+
                         <div className="shop__footer">
                         
                             <><button className="btn btn-2 btn-sep icon-create"
