@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import "./Shops.css"
 import { Shop } from "./Shop"
-import { deleteShop, getShops, createShop, updateShop } from "../../managers/ShopManager"
+import { deleteShop, getShops, createShop, closeShop, updateShop } from "../../managers/ShopManager"
 
 
 
@@ -21,6 +21,7 @@ export const ShopList = (props) => {
         const updatedShops = data.map((shop) => ({
             ...shop,
             addedByCurrentUser: shop.client?.id === parseInt(userId),
+            dateCompleted: "",
         }));
 
         setShops(updatedShops);
@@ -34,8 +35,52 @@ export const ShopList = (props) => {
             })
     }
 
+    const canClose = (shopObject) => {
+        const userAddedItem = shopObject.addedByCurrentUser;
+        const itemNotCompleted = shopObject.dateCompleted === "";
+      
+        return userAddedItem && itemNotCompleted;
+      };
+    
+    // const closeShop = (shopId) => {
+    //     // Function to close the shop item
+    //     // Call the API to update the shop item with a new dateCompleted value
+    //     // ...
+    // };
+    
+    const renderCloseButton = (shopObject) => {
+        if (canClose(shopObject)) {
+        return (
+            <button onClick={() => closeShop(shopObject.id)} className="shop__finish">
+            Add to Bag
+            </button>
+        );
+        } else {
+        return (            <button onClick={() => closeShop(shopObject.id)} className="shop__finish">
+        Add to Bag
+        </button>);
+        }
+    };
+    
+    const bankTotal = () => {
+        const completedShops = shops.filter(shop => shop.dateCompleted?.length > 1 ) //back to all tickets 
+        const total = completedShops.reduce((accumulator, currentValue) => {
+            return accumulator + currentValue.price;
+        }, 0);
+return total
+}
+
+
+// parent container includes
+
+
+
+
     return (
         <>
+        <div className="bank"> 
+Bank Total $ {bankTotal()}
+        </div>
         <h1>Howtie</h1>
         <article className="shops">
         <button className="btn btn-2 btn-sep icon-create"
@@ -56,7 +101,11 @@ export const ShopList = (props) => {
                                     onClick={() => {
                                         navigate({ pathname: `editShop/${shop.id}` })
                                     } }>Edit</button><button className="btn btn-2 btn-sep icon-create"
-                                        onClick={() => { deleteButton(shop.id) } }>Delete</button></>      
+                                        onClick={() => { deleteButton(shop.id) } }>Delete</button></> 
+                            <div className="shop__footer">
+                            {renderCloseButton(shop)}
+                            </div>
+
 
                         </div>
                     </section>

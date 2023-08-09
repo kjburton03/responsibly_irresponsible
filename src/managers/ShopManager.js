@@ -72,3 +72,15 @@ export const deleteShop = (id) => {
         }
     })
 }
+
+export const closeShop = (id) => {
+    return fetch(`http://localhost:8000/shops/${id}`,
+    {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("responsibly_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify()
+    })
+    .then(response => response.json());
+}
