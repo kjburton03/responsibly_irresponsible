@@ -7,11 +7,11 @@ export const NavBar = () => {
 
     return (
         <ul className="navbar">
-            {/* <li className="logo">
+            <li className="logo">
             <Link className="navbar__link" to="/home">
                 <img src={logo} alt="Logo" />
             </Link>
-            </li> */}
+            </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/todos">Todo List</Link>
             </li>

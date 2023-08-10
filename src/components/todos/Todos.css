@@ -1,0 +1,28 @@
+.bank {
+    background-color: #282626;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .todos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #38373764;
+  }
+  
+  .todo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 70px;
+    margin-bottom: 70px;
+    background-color: black;
+  }
+  

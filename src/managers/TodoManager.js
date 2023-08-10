@@ -7,15 +7,6 @@ export const getTodos = () => {
         .then(response => response.json())
 }
 
-// export const getTodoById = (id) => {
-//     return fetch(`http://localhost:8000/todos/${id}`, {
-//         headers:{
-//             "Authorization": `Token ${localStorage.getItem("responsible_token")}`
-//         }
-//     })
-//         .then(response => response.json())
-// }
-
 export const getTodoById = (id) => {
     return fetch(`http://localhost:8000/todos/${id}`, {
     headers: {
@@ -40,8 +31,6 @@ export const createTodo = (todo) => {
 
 
     }
-    
-    console.log(localStorage.getItem("responsible_token"));
 
 export const editTodo = (todo, id) => {
     return fetch(`http://localhost:8000/todos/${id}`, {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { Todo } from "./Todo"
-import { deleteTodo, getTodos, createTodo, updateTodo } from "../../managers/TodoManager"
+import "./Todos.css"
+import { deleteTodo, getTodos, createTodo, closeTodo, updateTodo } from "../../managers/TodoManager"
 
 
 
@@ -16,27 +16,17 @@ export const TodoList = (props) => {
     
     useEffect(() => {
         getTodos().then((data) => {
-    
-        console.log(data); 
-          // Check if data array is as expected
-    
-        const updatedTodos = data.map((todo) => {
-            console.log(todo.client); 
-            // Check if todo.client is defined and has expected properties
-
-            return {
+        
+        const updatedTodos = data.map((todo) => ({
             ...todo,
             addedByCurrentUser: todo.client?.id === parseInt(userId),
-            }
-        });
+            dateCompleted: "",
+        }));
 
-        console.log(updatedTodos); 
-          // Check if updatedTodos array is as expected
-    
         setTodos(updatedTodos);
         });
     }, [userId]);
-    
+
     const deleteButton = (id) => {
             deleteTodo(id)
             .then(() => {
@@ -44,21 +34,66 @@ export const TodoList = (props) => {
             })
     }
 
+    const canClose = (todoObject) => {
+        const userAddedItem = todoObject.addedByCurrentUser;
+        const itemNotCompleted = todoObject.dateCompleted === "";
+      
+        return userAddedItem && itemNotCompleted;
+      };
+    
+    // const closeShop = (shopId) => {
+    //     // Function to close the shop item
+    //     // Call the API to update the shop item with a new dateCompleted value
+    //     // ...
+    // };
+    
+    const renderCloseButton = (todo) => {
+        if (canClose(todo)) {
+        return (
+            <button onClick={() => closeTodo(todo.id)} className="todo__finish">
+            Add to Bag
+            </button>
+        );
+        } else {
+        return (            <button onClick={() => closeTodo(todo.id)} className="todo__finish">
+        Task Completed!
+        </button>);
+        }
+    };
+    
+    const bankTotal = () => {
+        const completedTodos = todos.filter(todo => todo.dateCompleted?.length > 1 ) //back to all tickets 
+        const total = completedTodos.reduce((accumulator, currentValue) => {
+            return accumulator + currentValue.price;
+        }, 0);
+return total
+}
+
+
+// parent container includes
+
+
+
+
     return (
         <>
+        <div className="bank"> 
+Bank Total $ {bankTotal()}
+        </div>
         <h1>Howtie</h1>
-        <article className="todos">
         <button className="btn btn-2 btn-sep icon-create"
             onClick={() => {
                 navigate({ pathname: "/todoForm" })
-                }}>Add New shop item</button>
+                }}>Add New todo item</button>
+        <article className="todos">
+
             <article className="todo__body">
             {
                 todos.map(todo => {
                     return <section key={`todo--${todo.id}`} className="todo">
                         <div className="todo__title">{todo.title}</div>
                         <div className="todo__price"> Price: {todo.price} </div>
-                        <div className="todo__daily">Daily: {todo.daily ?  "✔️": "✖️"}</div>
+                        <div className="todo__daily">Daily: {todo.daily ? "✔️" : "✖️"}</div>
 
                         <div className="todo__footer">
                         
@@ -66,7 +101,11 @@ export const TodoList = (props) => {
                                     onClick={() => {
                                         navigate({ pathname: `editTodo/${todo.id}` })
                                     } }>Edit</button><button className="btn btn-2 btn-sep icon-create"
-                                        onClick={() => { deleteButton(todo.id) } }>Delete</button></>      
+                                        onClick={() => { deleteButton(todo.id) } }>Delete</button></> 
+                            <div className="todo__footer">
+                            {renderCloseButton(todo)}
+                            </div>
+
 
                         </div>
                     </section>
@@ -77,6 +116,98 @@ export const TodoList = (props) => {
         </>
     )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { useEffect, useState } from "react"
+// import { Link, useNavigate } from "react-router-dom"
+// import { Todo } from "./Todo"
+// import { deleteTodo, getTodos, createTodo, closeTodo, updateTodo } from "../../managers/TodoManager"
+
+
+
+// export const TodoList = (props) => {  
+//     const [todos, setTodos] = useState([])
+//     const navigate = useNavigate() 
+//     const userId = parseInt(localStorage.getItem("responsibly_token"));
+
+//     useEffect(() => {
+//         getTodos().then((data) => setTodos(data))
+//     }, [])
+    
+//     useEffect(() => {
+//         getTodos().then((data) => {
+    
+//         console.log(data); 
+//           // Check if data array is as expected
+    
+//         const updatedTodos = data.map((todo) => {
+//             console.log(todo.client); 
+//             // Check if todo.client is defined and has expected properties
+
+//             return {
+//             ...todo,
+//             addedByCurrentUser: todo.client?.id === parseInt(userId),
+//             }
+//         });
+
+//         console.log(updatedTodos); 
+//           // Check if updatedTodos array is as expected
+    
+//         setTodos(updatedTodos);
+//         });
+//     }, [userId]);
+    
+//     const deleteButton = (id) => {
+//             deleteTodo(id)
+//             .then(() => {
+//                 getTodos().then(data => setTodos(data))
+//             })
+//     }
+
+//     return (
+//         <>
+//         <h1>Howtie</h1>
+//         <article className="todos">
+//         <button className="btn btn-2 btn-sep icon-create"
+//             onClick={() => {
+//                 navigate({ pathname: "/todoForm" })
+//                 }}>Add New shop item</button>
+//             <article className="todo__body">
+//             {
+//                 todos.map(todo => {
+//                     return <section key={`todo--${todo.id}`} className="todo">
+//                         <div className="todo__title">{todo.title}</div>
+//                         <div className="todo__price"> Price: {todo.price} </div>
+//                         <div className="todo__daily">Daily: {todo.daily ?  "✔️": "✖️"}</div>
+
+//                         <div className="todo__footer">
+                        
+//                             <><button className="btn btn-2 btn-sep icon-create"
+//                                     onClick={() => {
+//                                         navigate({ pathname: `editTodo/${todo.id}` })
+//                                     } }>Edit</button><button className="btn btn-2 btn-sep icon-create"
+//                                         onClick={() => { deleteButton(todo.id) } }>Delete</button></>      
+
+//                         </div>
+//                     </section>
+//                 })
+//             }
+//             </article>
+//         </article>
+//         </>
+//     )
+// }
 
 
 
