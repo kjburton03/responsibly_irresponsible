@@ -48,15 +48,15 @@ export const ShopList = (props) => {
     //     // ...
     // };
     
-    const renderCloseButton = (shopObject) => {
-        if (canClose(shopObject)) {
+    const renderCloseButton = (shop) => {
+        if (canClose(shop)) {
         return (
-            <button onClick={() => closeShop(shopObject.id)} className="shop__finish">
+            <button onClick={() => closeShop(shop.id)} className="shop__finish">
             Add to Bag
             </button>
         );
         } else {
-        return (            <button onClick={() => closeShop(shopObject.id)} className="shop__finish">
+        return (            <button onClick={() => closeShop(shop.id)} className="shop__finish">
         Add to Bag
         </button>);
         }
