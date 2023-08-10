@@ -1,0 +1,14 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+  }
+  .navbar__item--home {
+    margin-right: auto;
+  }
+  .navbar__item {
+    margin-left: auto;
+    list-style: none;
+  }
+      
