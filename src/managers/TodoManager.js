@@ -54,6 +54,18 @@ export const editTodo = (todo, id) => {
     })
 }
 
+export const closeTodo = (id) => {
+    return fetch(`http://localhost:8000/todos/${id}`,
+    {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("responsibly_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify()
+    })
+    .then(response => response.json());
+}
+
 export const deleteTodo = (id) => {
     return fetch(`http://localhost:8000/todos/${id}`,
     {
@@ -63,3 +75,4 @@ export const deleteTodo = (id) => {
         }
     })
 }
+
