@@ -1,4 +1,4 @@
-.navbar {
+/* .navbar {
     display: flex;
     align-items: center;
     padding: 10px;
@@ -11,4 +11,55 @@
     margin-left: auto;
     list-style: none;
   }
-      
+  .navbar__logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+  }
+  .navbar__link img {
+    height: 20px;
+    width: auto;
+  }
+   */
+
+/* NavBar.css */
+
+.navbar {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  list-style: none;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar__logo img {
+  max-width: 40px; /* Adjust the max-width to your desired size */
+  height: auto;
+}
+
+.navbar__item {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar__link {
+  text-decoration: none;
+  color: white;
+}
+
+.navbar__link:hover {
+  color: lightgray;
+}
+
+.active {
+  font-weight: bold;
+}
