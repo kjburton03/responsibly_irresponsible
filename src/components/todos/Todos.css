@@ -12,8 +12,9 @@
     max-height: 400px;
     overflow-y: auto;
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 5px;
     background-color: #38373764;
+    max-width: 800px;
   }
   
   .todo {
