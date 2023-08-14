@@ -43,12 +43,14 @@
 .navbar__logo img {
   max-width: 40px; /* Adjust the max-width to your desired size */
   height: auto;
+  margin-right: auto;
 }
 
 .navbar__item {
   margin: 0 15px;
   color: white;
   text-decoration: none;
+  margin-right: auto;
 }
 
 .navbar__link {
