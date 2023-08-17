@@ -62,7 +62,7 @@ export const TodoList = (props) => {
     };
     
     const bankTotal = () => {
-        const completedTodos = todos.filter(todo => todo.dateCompleted?.length > 1 ) //back to all tickets 
+        const completedTodos = todos.filter(todo => todo.cost?.length > 1 ) //back to all tickets 
         const total = completedTodos.reduce((accumulator, currentValue) => {
             return accumulator + currentValue.price;
         }, 0);
