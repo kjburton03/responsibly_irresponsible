@@ -3,7 +3,7 @@
 A web application to-do list styled to reward users with their own personalized shopping list full of items they can purchase guilt free after crossing off enough items on their to-do list. 
 
 //started styling on shop page 
-## Weekly Update 8/10/2023
+## Weekly Update 8/21/2023
 -The edit page is now working on both Todo and Shops. Checkbox still needs work
 
 -Started styling on Todo page and Nav Bar 
@@ -11,6 +11,8 @@ A web application to-do list styled to reward users with their own personalized 
 -Made Add To bag/Finished Task button. Connected to back end, still not connected to the bank.
 
 -Started bank
+
+## Weekly
 
 ## Plannning
 <!-- wireframe -->
