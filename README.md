@@ -12,7 +12,10 @@ A web application to-do list styled to reward users with their own personalized 
 
 -Started bank
 
-## Weekly
+## This Weeks Goals 8/21/2023
+- connect bank and completed button
+- have bank value show up
+- have to do item disappear once completed
 
 ## Plannning
 <!-- wireframe -->
