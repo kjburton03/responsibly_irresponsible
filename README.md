@@ -10,6 +10,7 @@ A web application to-do list styled to reward users with their own personalized 
 - connect bank and completed button
 - have bank value show up
 - have to do item disappear once completed
+- register new clients
 
 ## Plannning
 <!-- wireframe -->
